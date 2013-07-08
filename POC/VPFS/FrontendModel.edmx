@@ -1,0 +1,1215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Fund_FrontEndModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="Fund_FrontEndModelStoreContainer">
+          <EntitySet Name="BUF_FMODR" EntityType="Fund_FrontEndModel.Store.BUF_FMODR" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DBF_ORDER_REASON" EntityType="Fund_FrontEndModel.Store.DBF_ORDER_REASON" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DBF_ORDER_STRATEGY" EntityType="Fund_FrontEndModel.Store.DBF_ORDER_STRATEGY" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FRONT_ADM_USERFUND" EntityType="Fund_FrontEndModel.Store.FRONT_ADM_USERFUND" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FRONT_BAL_PORTFOLIO" EntityType="Fund_FrontEndModel.Store.FRONT_BAL_PORTFOLIO" store:Type="Tables" store:Schema="dbo" store:Name="FRONT_BAL_PORTFOLIO">
+            <DefiningQuery>SELECT 
+      [FRONT_BAL_PORTFOLIO].[Seq] AS [Seq], 
+      [FRONT_BAL_PORTFOLIO].[Type] AS [Type], 
+      [FRONT_BAL_PORTFOLIO].[FundID] AS [FundID], 
+      [FRONT_BAL_PORTFOLIO].[ProductID] AS [ProductID], 
+      [FRONT_BAL_PORTFOLIO].[ValQty] AS [ValQty], 
+      [FRONT_BAL_PORTFOLIO].[ValPrice] AS [ValPrice], 
+      [FRONT_BAL_PORTFOLIO].[AvgCost] AS [AvgCost], 
+      [FRONT_BAL_PORTFOLIO].[ProdCCY] AS [ProdCCY], 
+      [FRONT_BAL_PORTFOLIO].[FundCCY] AS [FundCCY], 
+      [FRONT_BAL_PORTFOLIO].[FxRate] AS [FxRate], 
+      [FRONT_BAL_PORTFOLIO].[ProdType] AS [ProdType], 
+      [FRONT_BAL_PORTFOLIO].[ProdTypeMultiplier] AS [ProdTypeMultiplier], 
+      [FRONT_BAL_PORTFOLIO].[ProdMrgn] AS [ProdMrgn], 
+      [FRONT_BAL_PORTFOLIO].[GLType] AS [GLType], 
+      [FRONT_BAL_PORTFOLIO].[ProdBal_ProdCCY] AS [ProdBal_ProdCCY], 
+      [FRONT_BAL_PORTFOLIO].[ProdCost_ProdCCY] AS [ProdCost_ProdCCY], 
+      [FRONT_BAL_PORTFOLIO].[ProdBal_FundCCY] AS [ProdBal_FundCCY], 
+      [FRONT_BAL_PORTFOLIO].[ProdCost_FundCCY] AS [ProdCost_FundCCY], 
+      [FRONT_BAL_PORTFOLIO].[FundBal] AS [FundBal], 
+      [FRONT_BAL_PORTFOLIO].[FundCost] AS [FundCost], 
+      [FRONT_BAL_PORTFOLIO].[CoCode] AS [CoCode], 
+      [FRONT_BAL_PORTFOLIO].[UpdateOn] AS [UpdateOn], 
+      [FRONT_BAL_PORTFOLIO].[UpdateBy] AS [UpdateBy]
+      FROM [dbo].[FRONT_BAL_PORTFOLIO] AS [FRONT_BAL_PORTFOLIO]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="FRONT_DBF_FUND" EntityType="Fund_FrontEndModel.Store.FRONT_DBF_FUND" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FRONT_DBF_PRODUCT" EntityType="Fund_FrontEndModel.Store.FRONT_DBF_PRODUCT" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LOG_FMODR_ERROR" EntityType="Fund_FrontEndModel.Store.LOG_FMODR_ERROR" store:Type="Tables" store:Schema="dbo" store:Name="LOG_FMODR_ERROR">
+            <DefiningQuery>SELECT 
+      [LOG_FMODR_ERROR].[Seq] AS [Seq], 
+      [LOG_FMODR_ERROR].[FMOdrRef] AS [FMOdrRef], 
+      [LOG_FMODR_ERROR].[ErrCode] AS [ErrCode], 
+      [LOG_FMODR_ERROR].[ErrDesc] AS [ErrDesc], 
+      [LOG_FMODR_ERROR].[ByPass] AS [ByPass], 
+      [LOG_FMODR_ERROR].[UpdatedBy] AS [UpdatedBy], 
+      [LOG_FMODR_ERROR].[UpdatedOn] AS [UpdatedOn], 
+      [LOG_FMODR_ERROR].[ByPassReason] AS [ByPassReason], 
+      [LOG_FMODR_ERROR].[ErrType] AS [ErrType], 
+      [LOG_FMODR_ERROR].[ByPassBy] AS [ByPassBy]
+      FROM [dbo].[LOG_FMODR_ERROR] AS [LOG_FMODR_ERROR]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TRN_FMODR" EntityType="Fund_FrontEndModel.Store.TRN_FMODR" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="v_ORDER_FORM_RESULT" EntityType="Fund_FrontEndModel.Store.v_ORDER_FORM_RESULT" store:Type="Views" store:Schema="dbo" store:Name="v_ORDER_FORM_RESULT">
+            <DefiningQuery>SELECT 
+      [v_ORDER_FORM_RESULT].[refno] AS [refno], 
+      [v_ORDER_FORM_RESULT].[fundid] AS [fundid], 
+      [v_ORDER_FORM_RESULT].[fundalias] AS [fundalias], 
+      [v_ORDER_FORM_RESULT].[productid] AS [productid], 
+      [v_ORDER_FORM_RESULT].[lsflag] AS [lsflag], 
+      [v_ORDER_FORM_RESULT].[bsflag] AS [bsflag], 
+      [v_ORDER_FORM_RESULT].[priority] AS [priority], 
+      [v_ORDER_FORM_RESULT].[qty] AS [qty], 
+      [v_ORDER_FORM_RESULT].[tgtwgt] AS [tgtwgt], 
+      [v_ORDER_FORM_RESULT].[ccy] AS [ccy], 
+      [v_ORDER_FORM_RESULT].[wgt] AS [wgt], 
+      [v_ORDER_FORM_RESULT].[errcode] AS [errcode], 
+      [v_ORDER_FORM_RESULT].[errdesc] AS [errdesc], 
+      [v_ORDER_FORM_RESULT].[errmsge] AS [errmsge], 
+      [v_ORDER_FORM_RESULT].[errtype] AS [errtype], 
+      [v_ORDER_FORM_RESULT].[hldpct] AS [hldpct], 
+      [v_ORDER_FORM_RESULT].[price] AS [price]
+      FROM [dbo].[v_ORDER_FORM_RESULT] AS [v_ORDER_FORM_RESULT]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_QRY_FUND_CASH" EntityType="Fund_FrontEndModel.Store.v_QRY_FUND_CASH" store:Type="Views" store:Schema="dbo" store:Name="v_QRY_FUND_CASH">
+            <DefiningQuery>SELECT 
+      [v_QRY_FUND_CASH].[fundalias] AS [fundalias], 
+      [v_QRY_FUND_CASH].[fundccy] AS [fundccy], 
+      [v_QRY_FUND_CASH].[fundbal] AS [fundbal], 
+      [v_QRY_FUND_CASH].[cashonhand] AS [cashonhand], 
+      [v_QRY_FUND_CASH].[pendcash] AS [pendcash], 
+      [v_QRY_FUND_CASH].[cashremained] AS [cashremained], 
+      [v_QRY_FUND_CASH].[userid] AS [userid], 
+      [v_QRY_FUND_CASH].[fundid] AS [fundid]
+      FROM [dbo].[v_QRY_FUND_CASH] AS [v_QRY_FUND_CASH]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_QRY_FUND_CASH_TWD" EntityType="Fund_FrontEndModel.Store.v_QRY_FUND_CASH_TWD" store:Type="Views" store:Schema="dbo" store:Name="v_QRY_FUND_CASH_TWD">
+            <DefiningQuery>SELECT 
+      [v_QRY_FUND_CASH_TWD].[fundalias] AS [fundalias], 
+      [v_QRY_FUND_CASH_TWD].[fundccy] AS [fundccy], 
+      [v_QRY_FUND_CASH_TWD].[fundbal] AS [fundbal], 
+      [v_QRY_FUND_CASH_TWD].[cashonhand] AS [cashonhand], 
+      [v_QRY_FUND_CASH_TWD].[pendcash] AS [pendcash], 
+      [v_QRY_FUND_CASH_TWD].[cashremained] AS [cashremained], 
+      [v_QRY_FUND_CASH_TWD].[userid] AS [userid], 
+      [v_QRY_FUND_CASH_TWD].[fundid] AS [fundid]
+      FROM [dbo].[v_QRY_FUND_CASH_TWD] AS [v_QRY_FUND_CASH_TWD]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <EntityType Name="BUF_FMODR">
+          <Key>
+            <PropertyRef Name="RefNo" />
+          </Key>
+          <Property Name="RefNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FundID" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ProductID" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="BSFlag" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="LSFlag" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="Unit" Type="decimal" Scale="3" />
+          <Property Name="FMID" Type="varchar" MaxLength="50" />
+          <Property Name="Reason" Type="varchar" MaxLength="500" />
+          <Property Name="Strategy" Type="varchar" MaxLength="500" />
+          <Property Name="Price" Type="decimal" Precision="22" Scale="7" />
+          <Property Name="Tgtwgt" Type="decimal" Scale="3" />
+          <Property Name="OdrType" Type="varchar" MaxLength="50" />
+          <Property Name="Style" Type="varchar" MaxLength="500" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="CD" Type="varchar" MaxLength="50" />
+          <Property Name="Updatedby" Type="varchar" MaxLength="50" />
+          <Property Name="Updatedon" Type="datetime" />
+          <Property Name="ActType" Type="varchar" MaxLength="50" />
+          <Property Name="PnoteIssuer" Type="varchar" MaxLength="50" />
+          <Property Name="AllocationMode" Type="varchar" MaxLength="50" />
+          <Property Name="Qty" Type="decimal" Scale="3" />
+          <Property Name="fundbal" Type="decimal" Scale="3" />
+          <Property Name="bypass" Type="char" MaxLength="10" />
+          <Property Name="basketname" Type="varchar" MaxLength="100" />
+          <Property Name="cshholdpct" Type="decimal" Scale="3" />
+          <Property Name="OdrNo" Type="int" />
+          <Property Name="qtyErrFlag" Type="int" />
+        </EntityType>
+        <EntityType Name="DBF_ORDER_REASON">
+          <Key>
+            <PropertyRef Name="seq" />
+          </Key>
+          <Property Name="seq" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Reason" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Updateby" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="UpdateOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DBF_ORDER_STRATEGY">
+          <Key>
+            <PropertyRef Name="seq" />
+          </Key>
+          <Property Name="seq" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Strategy" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Updateby" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="UpdateOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FRONT_ADM_USERFUND">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="FundID" />
+          </Key>
+          <Property Name="UserID" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="FundID" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Seq" Type="int" Nullable="false" />
+          <Property Name="TimeStmp" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="UpdateBy" Type="varchar" MaxLength="50" />
+          <Property Name="UpdateOn" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Fund_FrontEnd_Jacky.dbo.FRONT_BAL_PORTFOLIO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="FRONT_BAL_PORTFOLIO">
+          <Key>
+            <PropertyRef Name="Seq" />
+          </Key>
+          <Property Name="Seq" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="char" MaxLength="2" />
+          <Property Name="FundID" Type="varchar" MaxLength="50" />
+          <Property Name="ProductID" Type="varchar" MaxLength="50" />
+          <Property Name="ValQty" Type="decimal" Scale="6" />
+          <Property Name="ValPrice" Type="decimal" Scale="6" />
+          <Property Name="AvgCost" Type="decimal" Scale="5" />
+          <Property Name="ProdCCY" Type="varchar" MaxLength="50" />
+          <Property Name="FundCCY" Type="varchar" MaxLength="50" />
+          <Property Name="FxRate" Type="decimal" Scale="5" />
+          <Property Name="ProdType" Type="varchar" MaxLength="50" />
+          <Property Name="ProdTypeMultiplier" Type="decimal" Scale="2" />
+          <Property Name="ProdMrgn" Type="decimal" Scale="6" />
+          <Property Name="GLType" Type="varchar" MaxLength="50" />
+          <Property Name="ProdBal_ProdCCY" Type="decimal" Precision="21" Scale="6" />
+          <Property Name="ProdCost_ProdCCY" Type="decimal" Precision="21" Scale="6" />
+          <Property Name="ProdBal_FundCCY" Type="decimal" Precision="21" Scale="6" />
+          <Property Name="ProdCost_FundCCY" Type="decimal" Precision="21" Scale="6" />
+          <Property Name="FundBal" Type="decimal" Precision="21" Scale="5" />
+          <Property Name="FundCost" Type="decimal" Precision="21" Scale="5" />
+          <Property Name="CoCode" Type="varchar" MaxLength="50" />
+          <Property Name="UpdateOn" Type="datetime" />
+          <Property Name="UpdateBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FRONT_DBF_FUND">
+          <Key>
+            <PropertyRef Name="FundID" />
+          </Key>
+          <Property Name="FundID" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="ShortName" Type="varchar" MaxLength="50" />
+          <Property Name="FundName" Type="varchar" MaxLength="300" />
+          <Property Name="FundMgr" Type="varchar" MaxLength="50" />
+          <Property Name="RebateFlag" Type="char" MaxLength="1" />
+          <Property Name="LastPfmPrice" Type="decimal" Scale="5" />
+          <Property Name="NAV" Type="decimal" Scale="5" />
+          <Property Name="ValFreq" Type="int" />
+          <Property Name="ValFreqUnit" Type="char" MaxLength="1" />
+          <Property Name="ValWithinMth" Type="char" MaxLength="1" />
+          <Property Name="NextValDate" Type="datetime" />
+          <Property Name="FinYrEnd" Type="datetime" />
+          <Property Name="Remark" Type="varchar" MaxLength="4000" />
+          <Property Name="TimeStmp" Type="varchar" MaxLength="50" />
+          <Property Name="ChkStoredPrc" Type="varchar" MaxLength="20" />
+          <Property Name="LaunchDate" Type="datetime" />
+          <Property Name="CCY" Type="varchar" MaxLength="5" />
+          <Property Name="Auditor" Type="varchar" MaxLength="50" />
+          <Property Name="AvgUnitFreq" Type="int" />
+          <Property Name="UpdateBy" Type="varchar" MaxLength="50" />
+          <Property Name="UpdateOn" Type="datetime" />
+          <Property Name="LastValDate" Type="datetime" />
+          <Property Name="YrDays" Type="int" />
+          <Property Name="HWM" Type="decimal" Scale="5" />
+          <Property Name="HurdleRate" Type="decimal" Scale="5" />
+          <Property Name="HurdleRatePct" Type="varchar" MaxLength="1" />
+          <Property Name="UnitDec" Type="int" />
+          <Property Name="UnitDecDir" Type="char" MaxLength="1" />
+          <Property Name="GrossNAV" Type="decimal" Scale="5" />
+          <Property Name="FundCost" Type="decimal" Scale="5" />
+          <Property Name="SEQ" Type="int" />
+          <Property Name="UnitFlag" Type="char" MaxLength="1" />
+          <Property Name="FundAlias" Type="varchar" MaxLength="20" />
+          <Property Name="FundBal" Type="decimal" Scale="5" />
+          <Property Name="FirstDDay" Type="datetime" />
+          <Property Name="CloseDate" Type="datetime" />
+          <Property Name="CoCode" Type="varchar" MaxLength="50" />
+          <Property Name="ReqLong" Type="decimal" Scale="3" />
+          <Property Name="ReqShort" Type="decimal" Scale="3" />
+          <Property Name="AllowBL" Type="char" MaxLength="1" />
+          <Property Name="MPFFlag" Type="char" MaxLength="1" />
+          <Property Name="TargetCash" Type="decimal" Scale="5" />
+          <Property Name="SecACNo" Type="varchar" MaxLength="50" />
+          <Property Name="SecACName" Type="varchar" MaxLength="50" />
+          <Property Name="SecACBank" Type="varchar" MaxLength="50" />
+          <Property Name="SecAC2No" Type="varchar" MaxLength="50" />
+          <Property Name="SecAC2Name" Type="varchar" MaxLength="50" />
+          <Property Name="SecAC2Bank" Type="varchar" MaxLength="50" />
+          <Property Name="PPtACNo" Type="varchar" MaxLength="50" />
+          <Property Name="PPtACName" Type="varchar" MaxLength="50" />
+          <Property Name="PPtACBank" Type="varchar" MaxLength="50" />
+          <Property Name="primbkr" Type="varchar" MaxLength="50" />
+          <Property Name="putThruRate" Type="decimal" Scale="5" />
+          <Property Name="FundType" Type="varchar" MaxLength="10" />
+          <Property Name="CustFee" Type="char" MaxLength="1" />
+          <Property Name="ManageApproach" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Autoselect" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="FRONT_DBF_PRODUCT">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ProductName" Type="varchar" MaxLength="200" />
+          <Property Name="ProductType" Type="varchar" MaxLength="20" />
+          <Property Name="Industry" Type="varchar" MaxLength="20" />
+          <Property Name="ExchID" Type="varchar" MaxLength="20" />
+          <Property Name="CCY" Type="varchar" MaxLength="5" />
+          <Property Name="CtryCode" Type="varchar" MaxLength="50" />
+          <Property Name="ISIN" Type="varchar" MaxLength="20" />
+          <Property Name="SEDOLL" Type="varchar" MaxLength="50" />
+          <Property Name="CashType" Type="char" MaxLength="1" />
+          <Property Name="VotePerShare" Type="int" />
+          <Property Name="ClsPrice" Type="decimal" Scale="6" />
+          <Property Name="LastPrice" Type="decimal" Scale="6" />
+          <Property Name="ClsBid" Type="decimal" Scale="6" />
+          <Property Name="ClsAsk" Type="decimal" Scale="6" />
+          <Property Name="ChgPct" Type="decimal" Scale="5" />
+          <Property Name="IssuedShare" Type="decimal" />
+          <Property Name="Stamp" Type="char" MaxLength="1" />
+          <Property Name="Levy" Type="char" MaxLength="1" />
+          <Property Name="Suspend" Type="char" MaxLength="1" />
+          <Property Name="CCASS" Type="char" MaxLength="1" />
+          <Property Name="TradeFee" Type="char" MaxLength="1" />
+          <Property Name="SettleFee" Type="char" MaxLength="1" />
+          <Property Name="SSEFee" Type="char" MaxLength="1" />
+          <Property Name="AdminFee" Type="char" MaxLength="1" />
+          <Property Name="Remark" Type="varchar" MaxLength="200" />
+          <Property Name="Remark2" Type="varchar" MaxLength="200" />
+          <Property Name="RestrictFmDate" Type="datetime" />
+          <Property Name="RestrictToDate" Type="datetime" />
+          <Property Name="CCYQuote" Type="char" MaxLength="1" />
+          <Property Name="UpdateOn" Type="datetime" />
+          <Property Name="UpdateBy" Type="varchar" MaxLength="50" />
+          <Property Name="LotSize" Type="int" />
+          <Property Name="ShortName" Type="varchar" MaxLength="20" />
+          <Property Name="DecPt" Type="int" />
+          <Property Name="PrevClsPrice" Type="decimal" Scale="5" />
+          <Property Name="TfrFee" Type="char" MaxLength="1" />
+          <Property Name="IssuedShareUPD" Type="char" MaxLength="1" />
+          <Property Name="UnitType" Type="char" MaxLength="1" />
+          <Property Name="Rel_ProductID" Type="varchar" MaxLength="50" />
+          <Property Name="TxVolDaily" Type="decimal" Precision="20" />
+          <Property Name="TxVolAvg" Type="decimal" Scale="5" />
+          <Property Name="MgtStake" Type="decimal" Precision="10" Scale="5" />
+          <Property Name="TotHold" Type="decimal" />
+          <Property Name="Multiplier" Type="decimal" Scale="2" />
+          <Property Name="PriceFactor" Type="decimal" Scale="2" />
+          <Property Name="Short" Type="char" MaxLength="1" />
+          <Property Name="TickExempt" Type="char" MaxLength="1" />
+          <Property Name="ExtProdType" Type="varchar" MaxLength="50" />
+          <Property Name="FullyPaidUp" Type="char" MaxLength="1" />
+          <Property Name="Issuer" Type="varchar" MaxLength="200" />
+          <Property Name="IPODate" Type="varchar" MaxLength="10" />
+          <Property Name="MktCap" Type="decimal" Precision="20" />
+          <Property Name="ExpiryDate" Type="varchar" MaxLength="10" />
+          <Property Name="vwap" Type="decimal" Scale="6" />
+          <Property Name="sd" Type="decimal" Scale="6" />
+          <Property Name="collateral" Type="varchar" MaxLength="10" />
+          <Property Name="cntryofrisk" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Fund_FrontEnd_Jacky.dbo.LOG_FMODR_ERROR' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="LOG_FMODR_ERROR">
+          <Key>
+            <PropertyRef Name="Seq" />
+            <PropertyRef Name="FMOdrRef" />
+          </Key>
+          <Property Name="Seq" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FMOdrRef" Type="int" Nullable="false" />
+          <Property Name="ErrCode" Type="varchar" MaxLength="50" />
+          <Property Name="ErrDesc" Type="varchar" MaxLength="500" />
+          <Property Name="ByPass" Type="varchar" MaxLength="10" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="ByPassReason" Type="varchar" MaxLength="1000" />
+          <Property Name="ErrType" Type="varchar" MaxLength="10" />
+          <Property Name="ByPassBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TRN_FMODR">
+          <Key>
+            <PropertyRef Name="OdrNo" />
+          </Key>
+          <Property Name="OdrNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="GrpNo" Type="int" />
+          <Property Name="OdrTime" Type="datetime" />
+          <Property Name="FMID" Type="varchar" MaxLength="50" />
+          <Property Name="TraderID" Type="varchar" MaxLength="20" />
+          <Property Name="FundID" Type="varchar" MaxLength="20" />
+          <Property Name="ProductID" Type="varchar" MaxLength="50" />
+          <Property Name="BSFlag" Type="char" MaxLength="1" />
+          <Property Name="ProdCCY" Type="varchar" MaxLength="5" />
+          <Property Name="Price" Type="decimal" Scale="5" />
+          <Property Name="Unit" Type="decimal" Scale="5" />
+          <Property Name="Pct" Type="varchar" MaxLength="1" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="Style" Type="varchar" MaxLength="50" />
+          <Property Name="ExpDate" Type="datetime" />
+          <Property Name="TimeStmp" Type="varchar" MaxLength="50" />
+          <Property Name="cOdrPrice" Type="decimal" Scale="5" />
+          <Property Name="cOdrQty" Type="decimal" Scale="5" />
+          <Property Name="cUpToQty" Type="decimal" Scale="5" />
+          <Property Name="cBSFlag" Type="varchar" MaxLength="5" />
+          <Property Name="cTotFillQty" Type="decimal" Scale="5" />
+          <Property Name="cTotCanQty" Type="decimal" Scale="5" />
+          <Property Name="cOdrFlag" Type="char" MaxLength="1" />
+          <Property Name="cOdrStatus" Type="varchar" MaxLength="5" />
+          <Property Name="Posted" Type="char" MaxLength="1" />
+          <Property Name="Reason" Type="varchar" MaxLength="500" />
+          <Property Name="Strategy" Type="varchar" MaxLength="500" />
+          <Property Name="Remark" Type="varchar" MaxLength="500" />
+          <Property Name="UpdateOn" Type="datetime" />
+          <Property Name="UpdateBy" Type="varchar" MaxLength="50" />
+          <Property Name="LSFlag" Type="char" MaxLength="1" />
+          <Property Name="Callable" Type="char" MaxLength="1" />
+          <Property Name="Email" Type="char" MaxLength="1" />
+          <Property Name="DocRefNo" Type="varchar" MaxLength="50" />
+          <Property Name="AllocationMode" Type="varchar" MaxLength="50" />
+          <Property Name="OdrType" Type="varchar" MaxLength="2" />
+          <Property Name="InputBy" Type="varchar" MaxLength="50" />
+          <Property Name="Hedging" Type="bit" />
+          <Property Name="SentTime" Type="datetime" />
+          <Property Name="CD" Type="char" MaxLength="1" />
+          <Property Name="OdrOwner" Type="varchar" MaxLength="50" />
+          <Property Name="Hold" Type="varchar" MaxLength="2" />
+          <Property Name="HoldReason" Type="varchar" MaxLength="1000" />
+          <Property Name="cshholdpct" Type="decimal" Scale="3" />
+          <Property Name="CshHoldPctFlag" Type="int" />
+          <Property Name="ActType" Type="varchar" MaxLength="10" />
+          <Property Name="BasketName" Type="varchar" MaxLength="100" />
+          <Property Name="BasketApproved" Type="varchar" MaxLength="10" />
+          <Property Name="IPOType" Type="varchar" MaxLength="20" />
+          <Property Name="ProdRef" Type="varchar" MaxLength="50" />
+          <Property Name="PNoteIssuer" Type="varchar" MaxLength="50" />
+          <Property Name="Onbehalf" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Fund_FrontEnd_Jacky.dbo.v_ORDER_FORM_RESULT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="v_ORDER_FORM_RESULT">
+          <Key>
+            <PropertyRef Name="refno" />
+            <PropertyRef Name="fundid" />
+            <PropertyRef Name="productid" />
+            <PropertyRef Name="lsflag" />
+          </Key>
+          <Property Name="refno" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="fundid" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="fundalias" Type="varchar" MaxLength="20" />
+          <Property Name="productid" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="lsflag" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="bsflag" Type="varchar" MaxLength="4" />
+          <Property Name="priority" Type="varchar" MaxLength="30" />
+          <Property Name="qty" Type="int" />
+          <Property Name="tgtwgt" Type="decimal" Scale="3" />
+          <Property Name="ccy" Type="varchar" MaxLength="5" />
+          <Property Name="wgt" Type="float" />
+          <Property Name="errcode" Type="varchar" MaxLength="50" />
+          <Property Name="errdesc" Type="varchar" MaxLength="500" />
+          <Property Name="errmsge" Type="varchar" MaxLength="500" />
+          <Property Name="errtype" Type="varchar" MaxLength="10" />
+          <Property Name="hldpct" Type="decimal" Scale="2" />
+          <Property Name="price" Type="decimal" Precision="22" Scale="7" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Fund_FrontEnd_Jacky.dbo.v_QRY_FUND_CASH' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="v_QRY_FUND_CASH">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="fundalias" Type="varchar" MaxLength="50" />
+          <Property Name="fundccy" Type="varchar" MaxLength="5" />
+          <Property Name="fundbal" Type="decimal" Precision="38" Scale="5" />
+          <Property Name="cashonhand" Type="decimal" Precision="38" Scale="6" />
+          <Property Name="pendcash" Type="decimal" Precision="38" Scale="6" />
+          <Property Name="cashremained" Type="decimal" Precision="38" Scale="6" />
+          <Property Name="userid" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="fundid" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Fund_FrontEnd_Jacky.dbo.v_QRY_FUND_CASH_TWD' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="v_QRY_FUND_CASH_TWD">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="fundalias" Type="varchar" MaxLength="50" />
+          <Property Name="fundccy" Type="varchar" MaxLength="5" />
+          <Property Name="fundbal" Type="decimal" Precision="38" Scale="5" />
+          <Property Name="cashonhand" Type="decimal" Precision="38" Scale="6" />
+          <Property Name="pendcash" Type="numeric" Precision="38" Scale="6" />
+          <Property Name="cashremained" Type="numeric" Precision="38" Scale="6" />
+          <Property Name="userid" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="fundid" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Function Name="sp_cal_fmodr_v2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_ins_fmodr_v2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_sys_email_alert_fm" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_sys_email_alert_ss" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Stage" Type="char" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Fund_FrontEndModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Fund_FrontEndEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="FRONT_DBF_FUND" EntityType="Fund_FrontEndModel.FRONT_DBF_FUND" />
+          <EntitySet Name="DBF_ORDER_REASON" EntityType="Fund_FrontEndModel.DBF_ORDER_REASON" />
+          <EntitySet Name="DBF_ORDER_STRATEGY" EntityType="Fund_FrontEndModel.DBF_ORDER_STRATEGY" />
+          <EntitySet Name="LOG_FMODR_ERROR" EntityType="Fund_FrontEndModel.LOG_FMODR_ERROR" />
+          <EntitySet Name="TRN_FMODR" EntityType="Fund_FrontEndModel.TRN_FMODR" />
+          <EntitySet Name="BUF_FMODR" EntityType="Fund_FrontEndModel.BUF_FMODR" />
+          <FunctionImport Name="sp_cal_fmodr_v2" />
+          <EntitySet Name="FRONT_ADM_USERFUND" EntityType="Fund_FrontEndModel.FRONT_ADM_USERFUND" />
+          <FunctionImport Name="sp_sys_email_alert_fm">
+          <Parameter Name="UserID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_sys_email_alert_ss">
+          <Parameter Name="Stage" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ins_fmodr_v2" />
+          <EntitySet Name="FRONT_DBF_PRODUCT" EntityType="Fund_FrontEndModel.FRONT_DBF_PRODUCT" />
+          <EntitySet Name="v_ORDER_FORM_RESULT" EntityType="Fund_FrontEndModel.v_ORDER_FORM_RESULT" />
+          <EntitySet Name="FRONT_BAL_PORTFOLIO" EntityType="Fund_FrontEndModel.FRONT_BAL_PORTFOLIO" />
+          <EntitySet Name="v_QRY_FUND_CASH" EntityType="Fund_FrontEndModel.v_QRY_FUND_CASH" />
+          <EntitySet Name="v_QRY_FUND_CASH_TWD" EntityType="Fund_FrontEndModel.v_QRY_FUND_CASH_TWD" />
+        </EntityContainer>
+        <EntityType Name="FRONT_DBF_FUND">
+          <Key>
+            <PropertyRef Name="FundID" />
+          </Key>
+          <Property Name="FundID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="ShortName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="FundName" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="FundMgr" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="RebateFlag" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="LastPfmPrice" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="NAV" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="ValFreq" Type="Int32" />
+          <Property Name="ValFreqUnit" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="ValWithinMth" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="NextValDate" Type="DateTime" Precision="3" />
+          <Property Name="FinYrEnd" Type="DateTime" Precision="3" />
+          <Property Name="Remark" Type="String" MaxLength="4000" Unicode="false" FixedLength="false" />
+          <Property Name="TimeStmp" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ChkStoredPrc" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="LaunchDate" Type="DateTime" Precision="3" />
+          <Property Name="CCY" Type="String" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="Auditor" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="AvgUnitFreq" Type="Int32" />
+          <Property Name="UpdateBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UpdateOn" Type="DateTime" Precision="3" />
+          <Property Name="LastValDate" Type="DateTime" Precision="3" />
+          <Property Name="YrDays" Type="Int32" />
+          <Property Name="HWM" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="HurdleRate" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="HurdleRatePct" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="UnitDec" Type="Int32" />
+          <Property Name="UnitDecDir" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="GrossNAV" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="FundCost" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="SEQ" Type="Int32" />
+          <Property Name="UnitFlag" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="FundAlias" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="FundBal" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="FirstDDay" Type="DateTime" Precision="3" />
+          <Property Name="CloseDate" Type="DateTime" Precision="3" />
+          <Property Name="CoCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ReqLong" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="ReqShort" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="AllowBL" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="MPFFlag" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="TargetCash" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="SecACNo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="SecACName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="SecACBank" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="SecAC2No" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="SecAC2Name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="SecAC2Bank" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="PPtACNo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="PPtACName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="PPtACBank" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="primbkr" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="putThruRate" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="FundType" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="CustFee" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="ManageApproach" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Autoselect" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="DBF_ORDER_REASON">
+          <Key>
+            <PropertyRef Name="seq" />
+          </Key>
+          <Property Type="Int32" Name="seq" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Reason" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Updateby" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UpdateOn" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="DBF_ORDER_STRATEGY">
+          <Key>
+            <PropertyRef Name="seq" />
+          </Key>
+          <Property Type="Int32" Name="seq" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Strategy" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Updateby" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UpdateOn" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="LOG_FMODR_ERROR">
+          <Key>
+            <PropertyRef Name="Seq" />
+            <PropertyRef Name="FMOdrRef" />
+          </Key>
+          <Property Type="Int32" Name="Seq" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="FMOdrRef" Nullable="false" />
+          <Property Type="String" Name="ErrCode" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ErrDesc" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ByPass" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UpdatedBy" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UpdatedOn" Precision="3" />
+          <Property Type="String" Name="ByPassReason" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ErrType" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ByPassBy" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TRN_FMODR">
+          <Key>
+            <PropertyRef Name="OdrNo" />
+          </Key>
+          <Property Type="Int32" Name="OdrNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="GrpNo" />
+          <Property Type="DateTime" Name="OdrTime" Precision="3" />
+          <Property Type="String" Name="FMID" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TraderID" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FundID" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ProductID" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BSFlag" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="ProdCCY" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="Price" Precision="18" Scale="5" />
+          <Property Type="Decimal" Name="Unit" Precision="18" Scale="5" />
+          <Property Type="String" Name="Pct" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Priority" />
+          <Property Type="String" Name="Style" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="ExpDate" Precision="3" />
+          <Property Type="String" Name="TimeStmp" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="cOdrPrice" Precision="18" Scale="5" />
+          <Property Type="Decimal" Name="cOdrQty" Precision="18" Scale="5" />
+          <Property Type="Decimal" Name="cUpToQty" Precision="18" Scale="5" />
+          <Property Type="String" Name="cBSFlag" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="cTotFillQty" Precision="18" Scale="5" />
+          <Property Type="Decimal" Name="cTotCanQty" Precision="18" Scale="5" />
+          <Property Type="String" Name="cOdrFlag" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="cOdrStatus" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Posted" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="Reason" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Strategy" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Remark" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UpdateOn" Precision="3" />
+          <Property Type="String" Name="UpdateBy" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LSFlag" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="Callable" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="Email" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="DocRefNo" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AllocationMode" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OdrType" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="InputBy" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="Hedging" />
+          <Property Type="DateTime" Name="SentTime" Precision="3" />
+          <Property Type="String" Name="CD" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="OdrOwner" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Hold" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="HoldReason" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="cshholdpct" Precision="18" Scale="3" />
+          <Property Type="Int32" Name="CshHoldPctFlag" />
+          <Property Type="String" Name="ActType" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BasketName" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BasketApproved" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IPOType" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ProdRef" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PNoteIssuer" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Onbehalf" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BUF_FMODR">
+          <Key>
+            <PropertyRef Name="RefNo" />
+          </Key>
+          <Property Type="Int32" Name="RefNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FundID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ProductID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BSFlag" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LSFlag" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="Unit" Precision="18" Scale="3" />
+          <Property Type="String" Name="FMID" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Reason" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Strategy" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="Price" Precision="22" Scale="7" />
+          <Property Type="Decimal" Name="Tgtwgt" Precision="18" Scale="3" />
+          <Property Type="String" Name="OdrType" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Style" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Priority" />
+          <Property Type="String" Name="CD" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Updatedby" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="Updatedon" Precision="3" />
+          <Property Type="String" Name="ActType" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PnoteIssuer" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AllocationMode" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="Qty" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="fundbal" Precision="18" Scale="3" />
+          <Property Type="String" Name="bypass" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="basketname" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="cshholdpct" Precision="18" Scale="3" />
+          <Property Type="Int32" Name="OdrNo" />
+          <Property Type="Int32" Name="qtyErrFlag" />
+        </EntityType>
+        <EntityType Name="FRONT_ADM_USERFUND">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="FundID" />
+          </Key>
+          <Property Type="String" Name="UserID" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FundID" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Seq" Nullable="false" />
+          <Property Type="String" Name="TimeStmp" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UpdateBy" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UpdateOn" Precision="3" />
+        </EntityType>
+        <ComplexType Name="sp_sys_email_alert_fm_Result">
+          <Property Type="String" Name="Column1" Nullable="false" MaxLength="7" />
+          <Property Type="String" Name="Column2" Nullable="true" MaxLength="1000" />
+          <Property Type="String" Name="Column3" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="msg" Nullable="true" MaxLength="8000" />
+        </ComplexType>
+        <EntityType Name="FRONT_DBF_PRODUCT">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Type="String" Name="ProductID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ProductName" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ProductType" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Industry" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ExchID" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CCY" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CtryCode" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ISIN" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SEDOLL" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CashType" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="VotePerShare" />
+          <Property Type="Decimal" Name="ClsPrice" Precision="18" Scale="6" />
+          <Property Type="Decimal" Name="LastPrice" Precision="18" Scale="6" />
+          <Property Type="Decimal" Name="ClsBid" Precision="18" Scale="6" />
+          <Property Type="Decimal" Name="ClsAsk" Precision="18" Scale="6" />
+          <Property Type="Decimal" Name="ChgPct" Precision="18" Scale="5" />
+          <Property Type="Decimal" Name="IssuedShare" Precision="18" Scale="0" />
+          <Property Type="String" Name="Stamp" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="Levy" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="Suspend" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="CCASS" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="TradeFee" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="SettleFee" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="SSEFee" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="AdminFee" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="Remark" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Remark2" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="RestrictFmDate" Precision="3" />
+          <Property Type="DateTime" Name="RestrictToDate" Precision="3" />
+          <Property Type="String" Name="CCYQuote" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="DateTime" Name="UpdateOn" Precision="3" />
+          <Property Type="String" Name="UpdateBy" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="LotSize" />
+          <Property Type="String" Name="ShortName" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="DecPt" />
+          <Property Type="Decimal" Name="PrevClsPrice" Precision="18" Scale="5" />
+          <Property Type="String" Name="TfrFee" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="IssuedShareUPD" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="UnitType" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="Rel_ProductID" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="TxVolDaily" Precision="20" Scale="0" />
+          <Property Type="Decimal" Name="TxVolAvg" Precision="18" Scale="5" />
+          <Property Type="Decimal" Name="MgtStake" Precision="10" Scale="5" />
+          <Property Type="Decimal" Name="TotHold" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="Multiplier" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="PriceFactor" Precision="18" Scale="2" />
+          <Property Type="String" Name="Short" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="TickExempt" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="ExtProdType" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FullyPaidUp" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="Issuer" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IPODate" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="MktCap" Precision="20" Scale="0" />
+          <Property Type="String" Name="ExpiryDate" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="vwap" Precision="18" Scale="6" />
+          <Property Type="Decimal" Name="sd" Precision="18" Scale="6" />
+          <Property Type="String" Name="collateral" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="cntryofrisk" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="v_ORDER_FORM_RESULT">
+          <Key>
+            <PropertyRef Name="refno" />
+            <PropertyRef Name="fundid" />
+            <PropertyRef Name="productid" />
+            <PropertyRef Name="lsflag" />
+          </Key>
+          <Property Type="Int32" Name="refno" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="fundid" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="fundalias" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="productid" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="lsflag" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="bsflag" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="priority" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="qty" />
+          <Property Type="Decimal" Name="tgtwgt" Precision="18" Scale="3" />
+          <Property Type="String" Name="ccy" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="wgt" />
+          <Property Type="String" Name="errcode" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="errdesc" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="errmsge" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="errtype" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="hldpct" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="price" Precision="22" Scale="7" />
+        </EntityType>
+        <EntityType Name="FRONT_BAL_PORTFOLIO">
+          <Key>
+            <PropertyRef Name="Seq" />
+          </Key>
+          <Property Type="Int32" Name="Seq" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Type" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="FundID" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ProductID" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="ValQty" Precision="18" Scale="6" />
+          <Property Type="Decimal" Name="ValPrice" Precision="18" Scale="6" />
+          <Property Type="Decimal" Name="AvgCost" Precision="18" Scale="5" />
+          <Property Type="String" Name="ProdCCY" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FundCCY" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="FxRate" Precision="18" Scale="5" />
+          <Property Type="String" Name="ProdType" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="ProdTypeMultiplier" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="ProdMrgn" Precision="18" Scale="6" />
+          <Property Type="String" Name="GLType" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="ProdBal_ProdCCY" Precision="21" Scale="6" />
+          <Property Type="Decimal" Name="ProdCost_ProdCCY" Precision="21" Scale="6" />
+          <Property Type="Decimal" Name="ProdBal_FundCCY" Precision="21" Scale="6" />
+          <Property Type="Decimal" Name="ProdCost_FundCCY" Precision="21" Scale="6" />
+          <Property Type="Decimal" Name="FundBal" Precision="21" Scale="5" />
+          <Property Type="Decimal" Name="FundCost" Precision="21" Scale="5" />
+          <Property Type="String" Name="CoCode" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UpdateOn" Precision="3" />
+          <Property Type="String" Name="UpdateBy" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="v_QRY_FUND_CASH">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Type="String" Name="fundalias" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="fundccy" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="fundbal" Precision="38" Scale="5" />
+          <Property Type="Decimal" Name="cashonhand" Precision="38" Scale="6" />
+          <Property Type="Decimal" Name="pendcash" Precision="38" Scale="6" />
+          <Property Type="Decimal" Name="cashremained" Precision="38" Scale="6" />
+          <Property Type="String" Name="userid" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="fundid" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="v_QRY_FUND_CASH_TWD">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Type="String" Name="fundalias" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="fundccy" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="fundbal" Precision="38" Scale="5" />
+          <Property Type="Decimal" Name="cashonhand" Precision="38" Scale="6" />
+          <Property Type="Decimal" Name="pendcash" Precision="38" Scale="6" />
+          <Property Type="Decimal" Name="cashremained" Precision="38" Scale="6" />
+          <Property Type="String" Name="userid" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="fundid" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Fund_FrontEndModelStoreContainer" CdmEntityContainer="Fund_FrontEndEntities">
+          <EntitySetMapping Name="FRONT_DBF_FUND">
+            <EntityTypeMapping TypeName="Fund_FrontEndModel.FRONT_DBF_FUND">
+              <MappingFragment StoreEntitySet="FRONT_DBF_FUND">
+                <ScalarProperty Name="FundID" ColumnName="FundID" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="FundName" ColumnName="FundName" />
+                <ScalarProperty Name="FundMgr" ColumnName="FundMgr" />
+                <ScalarProperty Name="RebateFlag" ColumnName="RebateFlag" />
+                <ScalarProperty Name="LastPfmPrice" ColumnName="LastPfmPrice" />
+                <ScalarProperty Name="NAV" ColumnName="NAV" />
+                <ScalarProperty Name="ValFreq" ColumnName="ValFreq" />
+                <ScalarProperty Name="ValFreqUnit" ColumnName="ValFreqUnit" />
+                <ScalarProperty Name="ValWithinMth" ColumnName="ValWithinMth" />
+                <ScalarProperty Name="NextValDate" ColumnName="NextValDate" />
+                <ScalarProperty Name="FinYrEnd" ColumnName="FinYrEnd" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="TimeStmp" ColumnName="TimeStmp" />
+                <ScalarProperty Name="ChkStoredPrc" ColumnName="ChkStoredPrc" />
+                <ScalarProperty Name="LaunchDate" ColumnName="LaunchDate" />
+                <ScalarProperty Name="CCY" ColumnName="CCY" />
+                <ScalarProperty Name="Auditor" ColumnName="Auditor" />
+                <ScalarProperty Name="AvgUnitFreq" ColumnName="AvgUnitFreq" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="UpdateOn" ColumnName="UpdateOn" />
+                <ScalarProperty Name="LastValDate" ColumnName="LastValDate" />
+                <ScalarProperty Name="YrDays" ColumnName="YrDays" />
+                <ScalarProperty Name="HWM" ColumnName="HWM" />
+                <ScalarProperty Name="HurdleRate" ColumnName="HurdleRate" />
+                <ScalarProperty Name="HurdleRatePct" ColumnName="HurdleRatePct" />
+                <ScalarProperty Name="UnitDec" ColumnName="UnitDec" />
+                <ScalarProperty Name="UnitDecDir" ColumnName="UnitDecDir" />
+                <ScalarProperty Name="GrossNAV" ColumnName="GrossNAV" />
+                <ScalarProperty Name="FundCost" ColumnName="FundCost" />
+                <ScalarProperty Name="SEQ" ColumnName="SEQ" />
+                <ScalarProperty Name="UnitFlag" ColumnName="UnitFlag" />
+                <ScalarProperty Name="FundAlias" ColumnName="FundAlias" />
+                <ScalarProperty Name="FundBal" ColumnName="FundBal" />
+                <ScalarProperty Name="FirstDDay" ColumnName="FirstDDay" />
+                <ScalarProperty Name="CloseDate" ColumnName="CloseDate" />
+                <ScalarProperty Name="CoCode" ColumnName="CoCode" />
+                <ScalarProperty Name="ReqLong" ColumnName="ReqLong" />
+                <ScalarProperty Name="ReqShort" ColumnName="ReqShort" />
+                <ScalarProperty Name="AllowBL" ColumnName="AllowBL" />
+                <ScalarProperty Name="MPFFlag" ColumnName="MPFFlag" />
+                <ScalarProperty Name="TargetCash" ColumnName="TargetCash" />
+                <ScalarProperty Name="SecACNo" ColumnName="SecACNo" />
+                <ScalarProperty Name="SecACName" ColumnName="SecACName" />
+                <ScalarProperty Name="SecACBank" ColumnName="SecACBank" />
+                <ScalarProperty Name="SecAC2No" ColumnName="SecAC2No" />
+                <ScalarProperty Name="SecAC2Name" ColumnName="SecAC2Name" />
+                <ScalarProperty Name="SecAC2Bank" ColumnName="SecAC2Bank" />
+                <ScalarProperty Name="PPtACNo" ColumnName="PPtACNo" />
+                <ScalarProperty Name="PPtACName" ColumnName="PPtACName" />
+                <ScalarProperty Name="PPtACBank" ColumnName="PPtACBank" />
+                <ScalarProperty Name="primbkr" ColumnName="primbkr" />
+                <ScalarProperty Name="putThruRate" ColumnName="putThruRate" />
+                <ScalarProperty Name="FundType" ColumnName="FundType" />
+                <ScalarProperty Name="CustFee" ColumnName="CustFee" />
+                <ScalarProperty Name="ManageApproach" ColumnName="ManageApproach" />
+                <ScalarProperty Name="Autoselect" ColumnName="Autoselect" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DBF_ORDER_REASON">
+            <EntityTypeMapping TypeName="Fund_FrontEndModel.DBF_ORDER_REASON">
+              <MappingFragment StoreEntitySet="DBF_ORDER_REASON">
+                <ScalarProperty Name="UpdateOn" ColumnName="UpdateOn" />
+                <ScalarProperty Name="Updateby" ColumnName="Updateby" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="seq" ColumnName="seq" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DBF_ORDER_STRATEGY">
+            <EntityTypeMapping TypeName="Fund_FrontEndModel.DBF_ORDER_STRATEGY">
+              <MappingFragment StoreEntitySet="DBF_ORDER_STRATEGY">
+                <ScalarProperty Name="UpdateOn" ColumnName="UpdateOn" />
+                <ScalarProperty Name="Updateby" ColumnName="Updateby" />
+                <ScalarProperty Name="Strategy" ColumnName="Strategy" />
+                <ScalarProperty Name="seq" ColumnName="seq" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOG_FMODR_ERROR">
+            <EntityTypeMapping TypeName="Fund_FrontEndModel.LOG_FMODR_ERROR">
+              <MappingFragment StoreEntitySet="LOG_FMODR_ERROR">
+                <ScalarProperty Name="ByPassBy" ColumnName="ByPassBy" />
+                <ScalarProperty Name="ErrType" ColumnName="ErrType" />
+                <ScalarProperty Name="ByPassReason" ColumnName="ByPassReason" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="ByPass" ColumnName="ByPass" />
+                <ScalarProperty Name="ErrDesc" ColumnName="ErrDesc" />
+                <ScalarProperty Name="ErrCode" ColumnName="ErrCode" />
+                <ScalarProperty Name="FMOdrRef" ColumnName="FMOdrRef" />
+                <ScalarProperty Name="Seq" ColumnName="Seq" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRN_FMODR">
+            <EntityTypeMapping TypeName="Fund_FrontEndModel.TRN_FMODR">
+              <MappingFragment StoreEntitySet="TRN_FMODR">
+                <ScalarProperty Name="Onbehalf" ColumnName="Onbehalf" />
+                <ScalarProperty Name="PNoteIssuer" ColumnName="PNoteIssuer" />
+                <ScalarProperty Name="ProdRef" ColumnName="ProdRef" />
+                <ScalarProperty Name="IPOType" ColumnName="IPOType" />
+                <ScalarProperty Name="BasketApproved" ColumnName="BasketApproved" />
+                <ScalarProperty Name="BasketName" ColumnName="BasketName" />
+                <ScalarProperty Name="ActType" ColumnName="ActType" />
+                <ScalarProperty Name="CshHoldPctFlag" ColumnName="CshHoldPctFlag" />
+                <ScalarProperty Name="cshholdpct" ColumnName="cshholdpct" />
+                <ScalarProperty Name="HoldReason" ColumnName="HoldReason" />
+                <ScalarProperty Name="Hold" ColumnName="Hold" />
+                <ScalarProperty Name="OdrOwner" ColumnName="OdrOwner" />
+                <ScalarProperty Name="CD" ColumnName="CD" />
+                <ScalarProperty Name="SentTime" ColumnName="SentTime" />
+                <ScalarProperty Name="Hedging" ColumnName="Hedging" />
+                <ScalarProperty Name="InputBy" ColumnName="InputBy" />
+                <ScalarProperty Name="OdrType" ColumnName="OdrType" />
+                <ScalarProperty Name="AllocationMode" ColumnName="AllocationMode" />
+                <ScalarProperty Name="DocRefNo" ColumnName="DocRefNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Callable" ColumnName="Callable" />
+                <ScalarProperty Name="LSFlag" ColumnName="LSFlag" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="UpdateOn" ColumnName="UpdateOn" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Strategy" ColumnName="Strategy" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Posted" ColumnName="Posted" />
+                <ScalarProperty Name="cOdrStatus" ColumnName="cOdrStatus" />
+                <ScalarProperty Name="cOdrFlag" ColumnName="cOdrFlag" />
+                <ScalarProperty Name="cTotCanQty" ColumnName="cTotCanQty" />
+                <ScalarProperty Name="cTotFillQty" ColumnName="cTotFillQty" />
+                <ScalarProperty Name="cBSFlag" ColumnName="cBSFlag" />
+                <ScalarProperty Name="cUpToQty" ColumnName="cUpToQty" />
+                <ScalarProperty Name="cOdrQty" ColumnName="cOdrQty" />
+                <ScalarProperty Name="cOdrPrice" ColumnName="cOdrPrice" />
+                <ScalarProperty Name="TimeStmp" ColumnName="TimeStmp" />
+                <ScalarProperty Name="ExpDate" ColumnName="ExpDate" />
+                <ScalarProperty Name="Style" ColumnName="Style" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="Pct" ColumnName="Pct" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ProdCCY" ColumnName="ProdCCY" />
+                <ScalarProperty Name="BSFlag" ColumnName="BSFlag" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="FundID" ColumnName="FundID" />
+                <ScalarProperty Name="TraderID" ColumnName="TraderID" />
+                <ScalarProperty Name="FMID" ColumnName="FMID" />
+                <ScalarProperty Name="OdrTime" ColumnName="OdrTime" />
+                <ScalarProperty Name="GrpNo" ColumnName="GrpNo" />
+                <ScalarProperty Name="OdrNo" ColumnName="OdrNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BUF_FMODR">
+            <EntityTypeMapping TypeName="Fund_FrontEndModel.BUF_FMODR">
+              <MappingFragment StoreEntitySet="BUF_FMODR">
+                <ScalarProperty Name="qtyErrFlag" ColumnName="qtyErrFlag" />
+                <ScalarProperty Name="OdrNo" ColumnName="OdrNo" />
+                <ScalarProperty Name="cshholdpct" ColumnName="cshholdpct" />
+                <ScalarProperty Name="basketname" ColumnName="basketname" />
+                <ScalarProperty Name="bypass" ColumnName="bypass" />
+                <ScalarProperty Name="fundbal" ColumnName="fundbal" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="AllocationMode" ColumnName="AllocationMode" />
+                <ScalarProperty Name="PnoteIssuer" ColumnName="PnoteIssuer" />
+                <ScalarProperty Name="ActType" ColumnName="ActType" />
+                <ScalarProperty Name="Updatedon" ColumnName="Updatedon" />
+                <ScalarProperty Name="Updatedby" ColumnName="Updatedby" />
+                <ScalarProperty Name="CD" ColumnName="CD" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="Style" ColumnName="Style" />
+                <ScalarProperty Name="OdrType" ColumnName="OdrType" />
+                <ScalarProperty Name="Tgtwgt" ColumnName="Tgtwgt" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Strategy" ColumnName="Strategy" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="FMID" ColumnName="FMID" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="LSFlag" ColumnName="LSFlag" />
+                <ScalarProperty Name="BSFlag" ColumnName="BSFlag" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="FundID" ColumnName="FundID" />
+                <ScalarProperty Name="RefNo" ColumnName="RefNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_cal_fmodr_v2" FunctionName="Fund_FrontEndModel.Store.sp_cal_fmodr_v2" />
+          <EntitySetMapping Name="FRONT_ADM_USERFUND">
+            <EntityTypeMapping TypeName="Fund_FrontEndModel.FRONT_ADM_USERFUND">
+              <MappingFragment StoreEntitySet="FRONT_ADM_USERFUND">
+                <ScalarProperty Name="UpdateOn" ColumnName="UpdateOn" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="TimeStmp" ColumnName="TimeStmp" />
+                <ScalarProperty Name="Seq" ColumnName="Seq" />
+                <ScalarProperty Name="FundID" ColumnName="FundID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_sys_email_alert_fm" FunctionName="Fund_FrontEndModel.Store.sp_sys_email_alert_fm">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_sys_email_alert_ss" FunctionName="Fund_FrontEndModel.Store.sp_sys_email_alert_ss" />
+          <FunctionImportMapping FunctionImportName="sp_ins_fmodr_v2" FunctionName="Fund_FrontEndModel.Store.sp_ins_fmodr_v2" />
+          <EntitySetMapping Name="FRONT_DBF_PRODUCT">
+            <EntityTypeMapping TypeName="Fund_FrontEndModel.FRONT_DBF_PRODUCT">
+              <MappingFragment StoreEntitySet="FRONT_DBF_PRODUCT">
+                <ScalarProperty Name="cntryofrisk" ColumnName="cntryofrisk" />
+                <ScalarProperty Name="collateral" ColumnName="collateral" />
+                <ScalarProperty Name="sd" ColumnName="sd" />
+                <ScalarProperty Name="vwap" ColumnName="vwap" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="MktCap" ColumnName="MktCap" />
+                <ScalarProperty Name="IPODate" ColumnName="IPODate" />
+                <ScalarProperty Name="Issuer" ColumnName="Issuer" />
+                <ScalarProperty Name="FullyPaidUp" ColumnName="FullyPaidUp" />
+                <ScalarProperty Name="ExtProdType" ColumnName="ExtProdType" />
+                <ScalarProperty Name="TickExempt" ColumnName="TickExempt" />
+                <ScalarProperty Name="Short" ColumnName="Short" />
+                <ScalarProperty Name="PriceFactor" ColumnName="PriceFactor" />
+                <ScalarProperty Name="Multiplier" ColumnName="Multiplier" />
+                <ScalarProperty Name="TotHold" ColumnName="TotHold" />
+                <ScalarProperty Name="MgtStake" ColumnName="MgtStake" />
+                <ScalarProperty Name="TxVolAvg" ColumnName="TxVolAvg" />
+                <ScalarProperty Name="TxVolDaily" ColumnName="TxVolDaily" />
+                <ScalarProperty Name="Rel_ProductID" ColumnName="Rel_ProductID" />
+                <ScalarProperty Name="UnitType" ColumnName="UnitType" />
+                <ScalarProperty Name="IssuedShareUPD" ColumnName="IssuedShareUPD" />
+                <ScalarProperty Name="TfrFee" ColumnName="TfrFee" />
+                <ScalarProperty Name="PrevClsPrice" ColumnName="PrevClsPrice" />
+                <ScalarProperty Name="DecPt" ColumnName="DecPt" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="LotSize" ColumnName="LotSize" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="UpdateOn" ColumnName="UpdateOn" />
+                <ScalarProperty Name="CCYQuote" ColumnName="CCYQuote" />
+                <ScalarProperty Name="RestrictToDate" ColumnName="RestrictToDate" />
+                <ScalarProperty Name="RestrictFmDate" ColumnName="RestrictFmDate" />
+                <ScalarProperty Name="Remark2" ColumnName="Remark2" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="AdminFee" ColumnName="AdminFee" />
+                <ScalarProperty Name="SSEFee" ColumnName="SSEFee" />
+                <ScalarProperty Name="SettleFee" ColumnName="SettleFee" />
+                <ScalarProperty Name="TradeFee" ColumnName="TradeFee" />
+                <ScalarProperty Name="CCASS" ColumnName="CCASS" />
+                <ScalarProperty Name="Suspend" ColumnName="Suspend" />
+                <ScalarProperty Name="Levy" ColumnName="Levy" />
+                <ScalarProperty Name="Stamp" ColumnName="Stamp" />
+                <ScalarProperty Name="IssuedShare" ColumnName="IssuedShare" />
+                <ScalarProperty Name="ChgPct" ColumnName="ChgPct" />
+                <ScalarProperty Name="ClsAsk" ColumnName="ClsAsk" />
+                <ScalarProperty Name="ClsBid" ColumnName="ClsBid" />
+                <ScalarProperty Name="LastPrice" ColumnName="LastPrice" />
+                <ScalarProperty Name="ClsPrice" ColumnName="ClsPrice" />
+                <ScalarProperty Name="VotePerShare" ColumnName="VotePerShare" />
+                <ScalarProperty Name="CashType" ColumnName="CashType" />
+                <ScalarProperty Name="SEDOLL" ColumnName="SEDOLL" />
+                <ScalarProperty Name="ISIN" ColumnName="ISIN" />
+                <ScalarProperty Name="CtryCode" ColumnName="CtryCode" />
+                <ScalarProperty Name="CCY" ColumnName="CCY" />
+                <ScalarProperty Name="ExchID" ColumnName="ExchID" />
+                <ScalarProperty Name="Industry" ColumnName="Industry" />
+                <ScalarProperty Name="ProductType" ColumnName="ProductType" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_ORDER_FORM_RESULT">
+            <EntityTypeMapping TypeName="Fund_FrontEndModel.v_ORDER_FORM_RESULT">
+              <MappingFragment StoreEntitySet="v_ORDER_FORM_RESULT">
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="hldpct" ColumnName="hldpct" />
+                <ScalarProperty Name="errtype" ColumnName="errtype" />
+                <ScalarProperty Name="errmsge" ColumnName="errmsge" />
+                <ScalarProperty Name="errdesc" ColumnName="errdesc" />
+                <ScalarProperty Name="errcode" ColumnName="errcode" />
+                <ScalarProperty Name="wgt" ColumnName="wgt" />
+                <ScalarProperty Name="ccy" ColumnName="ccy" />
+                <ScalarProperty Name="tgtwgt" ColumnName="tgtwgt" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="priority" ColumnName="priority" />
+                <ScalarProperty Name="bsflag" ColumnName="bsflag" />
+                <ScalarProperty Name="lsflag" ColumnName="lsflag" />
+                <ScalarProperty Name="productid" ColumnName="productid" />
+                <ScalarProperty Name="fundalias" ColumnName="fundalias" />
+                <ScalarProperty Name="fundid" ColumnName="fundid" />
+                <ScalarProperty Name="refno" ColumnName="refno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FRONT_BAL_PORTFOLIO">
+            <EntityTypeMapping TypeName="Fund_FrontEndModel.FRONT_BAL_PORTFOLIO">
+              <MappingFragment StoreEntitySet="FRONT_BAL_PORTFOLIO">
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="UpdateOn" ColumnName="UpdateOn" />
+                <ScalarProperty Name="CoCode" ColumnName="CoCode" />
+                <ScalarProperty Name="FundCost" ColumnName="FundCost" />
+                <ScalarProperty Name="FundBal" ColumnName="FundBal" />
+                <ScalarProperty Name="ProdCost_FundCCY" ColumnName="ProdCost_FundCCY" />
+                <ScalarProperty Name="ProdBal_FundCCY" ColumnName="ProdBal_FundCCY" />
+                <ScalarProperty Name="ProdCost_ProdCCY" ColumnName="ProdCost_ProdCCY" />
+                <ScalarProperty Name="ProdBal_ProdCCY" ColumnName="ProdBal_ProdCCY" />
+                <ScalarProperty Name="GLType" ColumnName="GLType" />
+                <ScalarProperty Name="ProdMrgn" ColumnName="ProdMrgn" />
+                <ScalarProperty Name="ProdTypeMultiplier" ColumnName="ProdTypeMultiplier" />
+                <ScalarProperty Name="ProdType" ColumnName="ProdType" />
+                <ScalarProperty Name="FxRate" ColumnName="FxRate" />
+                <ScalarProperty Name="FundCCY" ColumnName="FundCCY" />
+                <ScalarProperty Name="ProdCCY" ColumnName="ProdCCY" />
+                <ScalarProperty Name="AvgCost" ColumnName="AvgCost" />
+                <ScalarProperty Name="ValPrice" ColumnName="ValPrice" />
+                <ScalarProperty Name="ValQty" ColumnName="ValQty" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="FundID" ColumnName="FundID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Seq" ColumnName="Seq" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_QRY_FUND_CASH">
+            <EntityTypeMapping TypeName="Fund_FrontEndModel.v_QRY_FUND_CASH">
+              <MappingFragment StoreEntitySet="v_QRY_FUND_CASH">
+                <ScalarProperty Name="fundid" ColumnName="fundid" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="cashremained" ColumnName="cashremained" />
+                <ScalarProperty Name="pendcash" ColumnName="pendcash" />
+                <ScalarProperty Name="cashonhand" ColumnName="cashonhand" />
+                <ScalarProperty Name="fundbal" ColumnName="fundbal" />
+                <ScalarProperty Name="fundccy" ColumnName="fundccy" />
+                <ScalarProperty Name="fundalias" ColumnName="fundalias" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_QRY_FUND_CASH_TWD">
+            <EntityTypeMapping TypeName="Fund_FrontEndModel.v_QRY_FUND_CASH_TWD">
+              <MappingFragment StoreEntitySet="v_QRY_FUND_CASH_TWD">
+                <ScalarProperty Name="fundid" ColumnName="fundid" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="cashremained" ColumnName="cashremained" />
+                <ScalarProperty Name="pendcash" ColumnName="pendcash" />
+                <ScalarProperty Name="cashonhand" ColumnName="cashonhand" />
+                <ScalarProperty Name="fundbal" ColumnName="fundbal" />
+                <ScalarProperty Name="fundccy" ColumnName="fundccy" />
+                <ScalarProperty Name="fundalias" ColumnName="fundalias" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

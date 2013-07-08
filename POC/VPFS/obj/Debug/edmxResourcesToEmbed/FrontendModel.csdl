@@ -1,0 +1,370 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Fund_FrontEndModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Fund_FrontEndEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="FRONT_DBF_FUND" EntityType="Fund_FrontEndModel.FRONT_DBF_FUND" />
+    <EntitySet Name="DBF_ORDER_REASON" EntityType="Fund_FrontEndModel.DBF_ORDER_REASON" />
+    <EntitySet Name="DBF_ORDER_STRATEGY" EntityType="Fund_FrontEndModel.DBF_ORDER_STRATEGY" />
+    <EntitySet Name="LOG_FMODR_ERROR" EntityType="Fund_FrontEndModel.LOG_FMODR_ERROR" />
+    <EntitySet Name="TRN_FMODR" EntityType="Fund_FrontEndModel.TRN_FMODR" />
+    <EntitySet Name="BUF_FMODR" EntityType="Fund_FrontEndModel.BUF_FMODR" />
+    <FunctionImport Name="sp_cal_fmodr_v2" />
+    <EntitySet Name="FRONT_ADM_USERFUND" EntityType="Fund_FrontEndModel.FRONT_ADM_USERFUND" />
+    <FunctionImport Name="sp_sys_email_alert_fm">
+      <Parameter Name="UserID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_sys_email_alert_ss">
+      <Parameter Name="Stage" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ins_fmodr_v2" />
+    <EntitySet Name="FRONT_DBF_PRODUCT" EntityType="Fund_FrontEndModel.FRONT_DBF_PRODUCT" />
+    <EntitySet Name="v_ORDER_FORM_RESULT" EntityType="Fund_FrontEndModel.v_ORDER_FORM_RESULT" />
+    <EntitySet Name="FRONT_BAL_PORTFOLIO" EntityType="Fund_FrontEndModel.FRONT_BAL_PORTFOLIO" />
+    <EntitySet Name="v_QRY_FUND_CASH" EntityType="Fund_FrontEndModel.v_QRY_FUND_CASH" />
+    <EntitySet Name="v_QRY_FUND_CASH_TWD" EntityType="Fund_FrontEndModel.v_QRY_FUND_CASH_TWD" />
+  </EntityContainer>
+  <EntityType Name="FRONT_DBF_FUND">
+    <Key>
+      <PropertyRef Name="FundID" />
+    </Key>
+    <Property Name="FundID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="ShortName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="FundName" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+    <Property Name="FundMgr" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="RebateFlag" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="LastPfmPrice" Type="Decimal" Precision="18" Scale="5" />
+    <Property Name="NAV" Type="Decimal" Precision="18" Scale="5" />
+    <Property Name="ValFreq" Type="Int32" />
+    <Property Name="ValFreqUnit" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="ValWithinMth" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="NextValDate" Type="DateTime" Precision="3" />
+    <Property Name="FinYrEnd" Type="DateTime" Precision="3" />
+    <Property Name="Remark" Type="String" MaxLength="4000" Unicode="false" FixedLength="false" />
+    <Property Name="TimeStmp" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ChkStoredPrc" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="LaunchDate" Type="DateTime" Precision="3" />
+    <Property Name="CCY" Type="String" MaxLength="5" Unicode="false" FixedLength="false" />
+    <Property Name="Auditor" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="AvgUnitFreq" Type="Int32" />
+    <Property Name="UpdateBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UpdateOn" Type="DateTime" Precision="3" />
+    <Property Name="LastValDate" Type="DateTime" Precision="3" />
+    <Property Name="YrDays" Type="Int32" />
+    <Property Name="HWM" Type="Decimal" Precision="18" Scale="5" />
+    <Property Name="HurdleRate" Type="Decimal" Precision="18" Scale="5" />
+    <Property Name="HurdleRatePct" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="UnitDec" Type="Int32" />
+    <Property Name="UnitDecDir" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="GrossNAV" Type="Decimal" Precision="18" Scale="5" />
+    <Property Name="FundCost" Type="Decimal" Precision="18" Scale="5" />
+    <Property Name="SEQ" Type="Int32" />
+    <Property Name="UnitFlag" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="FundAlias" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="FundBal" Type="Decimal" Precision="18" Scale="5" />
+    <Property Name="FirstDDay" Type="DateTime" Precision="3" />
+    <Property Name="CloseDate" Type="DateTime" Precision="3" />
+    <Property Name="CoCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ReqLong" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="ReqShort" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="AllowBL" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="MPFFlag" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="TargetCash" Type="Decimal" Precision="18" Scale="5" />
+    <Property Name="SecACNo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="SecACName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="SecACBank" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="SecAC2No" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="SecAC2Name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="SecAC2Bank" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="PPtACNo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="PPtACName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="PPtACBank" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="primbkr" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="putThruRate" Type="Decimal" Precision="18" Scale="5" />
+    <Property Name="FundType" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="CustFee" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="ManageApproach" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Autoselect" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="DBF_ORDER_REASON">
+    <Key>
+      <PropertyRef Name="seq" />
+    </Key>
+    <Property Type="Int32" Name="seq" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Reason" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Updateby" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UpdateOn" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="DBF_ORDER_STRATEGY">
+    <Key>
+      <PropertyRef Name="seq" />
+    </Key>
+    <Property Type="Int32" Name="seq" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Strategy" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Updateby" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UpdateOn" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="LOG_FMODR_ERROR">
+    <Key>
+      <PropertyRef Name="Seq" />
+      <PropertyRef Name="FMOdrRef" />
+    </Key>
+    <Property Type="Int32" Name="Seq" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="FMOdrRef" Nullable="false" />
+    <Property Type="String" Name="ErrCode" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ErrDesc" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ByPass" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="UpdatedBy" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UpdatedOn" Precision="3" />
+    <Property Type="String" Name="ByPassReason" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ErrType" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ByPassBy" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TRN_FMODR">
+    <Key>
+      <PropertyRef Name="OdrNo" />
+    </Key>
+    <Property Type="Int32" Name="OdrNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="GrpNo" />
+    <Property Type="DateTime" Name="OdrTime" Precision="3" />
+    <Property Type="String" Name="FMID" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="TraderID" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FundID" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ProductID" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BSFlag" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="ProdCCY" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="Price" Precision="18" Scale="5" />
+    <Property Type="Decimal" Name="Unit" Precision="18" Scale="5" />
+    <Property Type="String" Name="Pct" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="Priority" />
+    <Property Type="String" Name="Style" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="ExpDate" Precision="3" />
+    <Property Type="String" Name="TimeStmp" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="cOdrPrice" Precision="18" Scale="5" />
+    <Property Type="Decimal" Name="cOdrQty" Precision="18" Scale="5" />
+    <Property Type="Decimal" Name="cUpToQty" Precision="18" Scale="5" />
+    <Property Type="String" Name="cBSFlag" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="cTotFillQty" Precision="18" Scale="5" />
+    <Property Type="Decimal" Name="cTotCanQty" Precision="18" Scale="5" />
+    <Property Type="String" Name="cOdrFlag" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="cOdrStatus" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Posted" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="Reason" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Strategy" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Remark" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UpdateOn" Precision="3" />
+    <Property Type="String" Name="UpdateBy" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="LSFlag" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="Callable" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="Email" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="DocRefNo" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="AllocationMode" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="OdrType" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="InputBy" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="Hedging" />
+    <Property Type="DateTime" Name="SentTime" Precision="3" />
+    <Property Type="String" Name="CD" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="OdrOwner" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Hold" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="HoldReason" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="cshholdpct" Precision="18" Scale="3" />
+    <Property Type="Int32" Name="CshHoldPctFlag" />
+    <Property Type="String" Name="ActType" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BasketName" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BasketApproved" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="IPOType" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ProdRef" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PNoteIssuer" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Onbehalf" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="BUF_FMODR">
+    <Key>
+      <PropertyRef Name="RefNo" />
+    </Key>
+    <Property Type="Int32" Name="RefNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="FundID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ProductID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BSFlag" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="LSFlag" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="Unit" Precision="18" Scale="3" />
+    <Property Type="String" Name="FMID" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Reason" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Strategy" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="Price" Precision="22" Scale="7" />
+    <Property Type="Decimal" Name="Tgtwgt" Precision="18" Scale="3" />
+    <Property Type="String" Name="OdrType" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Style" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="Priority" />
+    <Property Type="String" Name="CD" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Updatedby" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="Updatedon" Precision="3" />
+    <Property Type="String" Name="ActType" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PnoteIssuer" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="AllocationMode" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="Qty" Precision="18" Scale="3" />
+    <Property Type="Decimal" Name="fundbal" Precision="18" Scale="3" />
+    <Property Type="String" Name="bypass" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="basketname" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="cshholdpct" Precision="18" Scale="3" />
+    <Property Type="Int32" Name="OdrNo" />
+    <Property Type="Int32" Name="qtyErrFlag" />
+  </EntityType>
+  <EntityType Name="FRONT_ADM_USERFUND">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="FundID" />
+    </Key>
+    <Property Type="String" Name="UserID" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FundID" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="Seq" Nullable="false" />
+    <Property Type="String" Name="TimeStmp" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="UpdateBy" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UpdateOn" Precision="3" />
+  </EntityType>
+  <ComplexType Name="sp_sys_email_alert_fm_Result">
+    <Property Type="String" Name="Column1" Nullable="false" MaxLength="7" />
+    <Property Type="String" Name="Column2" Nullable="true" MaxLength="1000" />
+    <Property Type="String" Name="Column3" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="msg" Nullable="true" MaxLength="8000" />
+  </ComplexType>
+  <EntityType Name="FRONT_DBF_PRODUCT">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Type="String" Name="ProductID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ProductName" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ProductType" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Industry" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ExchID" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CCY" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CtryCode" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ISIN" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SEDOLL" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CashType" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Type="Int32" Name="VotePerShare" />
+    <Property Type="Decimal" Name="ClsPrice" Precision="18" Scale="6" />
+    <Property Type="Decimal" Name="LastPrice" Precision="18" Scale="6" />
+    <Property Type="Decimal" Name="ClsBid" Precision="18" Scale="6" />
+    <Property Type="Decimal" Name="ClsAsk" Precision="18" Scale="6" />
+    <Property Type="Decimal" Name="ChgPct" Precision="18" Scale="5" />
+    <Property Type="Decimal" Name="IssuedShare" Precision="18" Scale="0" />
+    <Property Type="String" Name="Stamp" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="Levy" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="Suspend" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="CCASS" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="TradeFee" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="SettleFee" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="SSEFee" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="AdminFee" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="Remark" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Remark2" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="RestrictFmDate" Precision="3" />
+    <Property Type="DateTime" Name="RestrictToDate" Precision="3" />
+    <Property Type="String" Name="CCYQuote" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Type="DateTime" Name="UpdateOn" Precision="3" />
+    <Property Type="String" Name="UpdateBy" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="LotSize" />
+    <Property Type="String" Name="ShortName" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="DecPt" />
+    <Property Type="Decimal" Name="PrevClsPrice" Precision="18" Scale="5" />
+    <Property Type="String" Name="TfrFee" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="IssuedShareUPD" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="UnitType" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="Rel_ProductID" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="TxVolDaily" Precision="20" Scale="0" />
+    <Property Type="Decimal" Name="TxVolAvg" Precision="18" Scale="5" />
+    <Property Type="Decimal" Name="MgtStake" Precision="10" Scale="5" />
+    <Property Type="Decimal" Name="TotHold" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="Multiplier" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="PriceFactor" Precision="18" Scale="2" />
+    <Property Type="String" Name="Short" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="TickExempt" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="ExtProdType" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FullyPaidUp" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="Issuer" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="IPODate" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="MktCap" Precision="20" Scale="0" />
+    <Property Type="String" Name="ExpiryDate" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="vwap" Precision="18" Scale="6" />
+    <Property Type="Decimal" Name="sd" Precision="18" Scale="6" />
+    <Property Type="String" Name="collateral" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="cntryofrisk" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="v_ORDER_FORM_RESULT">
+    <Key>
+      <PropertyRef Name="refno" />
+      <PropertyRef Name="fundid" />
+      <PropertyRef Name="productid" />
+      <PropertyRef Name="lsflag" />
+    </Key>
+    <Property Type="Int32" Name="refno" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="fundid" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="fundalias" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="productid" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="lsflag" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="bsflag" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="priority" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="qty" />
+    <Property Type="Decimal" Name="tgtwgt" Precision="18" Scale="3" />
+    <Property Type="String" Name="ccy" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Type="Double" Name="wgt" />
+    <Property Type="String" Name="errcode" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="errdesc" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="errmsge" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="errtype" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="hldpct" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="price" Precision="22" Scale="7" />
+  </EntityType>
+  <EntityType Name="FRONT_BAL_PORTFOLIO">
+    <Key>
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Type="Int32" Name="Seq" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Type" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="FundID" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ProductID" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="ValQty" Precision="18" Scale="6" />
+    <Property Type="Decimal" Name="ValPrice" Precision="18" Scale="6" />
+    <Property Type="Decimal" Name="AvgCost" Precision="18" Scale="5" />
+    <Property Type="String" Name="ProdCCY" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FundCCY" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="FxRate" Precision="18" Scale="5" />
+    <Property Type="String" Name="ProdType" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="ProdTypeMultiplier" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="ProdMrgn" Precision="18" Scale="6" />
+    <Property Type="String" Name="GLType" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="ProdBal_ProdCCY" Precision="21" Scale="6" />
+    <Property Type="Decimal" Name="ProdCost_ProdCCY" Precision="21" Scale="6" />
+    <Property Type="Decimal" Name="ProdBal_FundCCY" Precision="21" Scale="6" />
+    <Property Type="Decimal" Name="ProdCost_FundCCY" Precision="21" Scale="6" />
+    <Property Type="Decimal" Name="FundBal" Precision="21" Scale="5" />
+    <Property Type="Decimal" Name="FundCost" Precision="21" Scale="5" />
+    <Property Type="String" Name="CoCode" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UpdateOn" Precision="3" />
+    <Property Type="String" Name="UpdateBy" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="v_QRY_FUND_CASH">
+    <Key>
+      <PropertyRef Name="userid" />
+    </Key>
+    <Property Type="String" Name="fundalias" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="fundccy" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="fundbal" Precision="38" Scale="5" />
+    <Property Type="Decimal" Name="cashonhand" Precision="38" Scale="6" />
+    <Property Type="Decimal" Name="pendcash" Precision="38" Scale="6" />
+    <Property Type="Decimal" Name="cashremained" Precision="38" Scale="6" />
+    <Property Type="String" Name="userid" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="fundid" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="v_QRY_FUND_CASH_TWD">
+    <Key>
+      <PropertyRef Name="userid" />
+    </Key>
+    <Property Type="String" Name="fundalias" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="fundccy" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="fundbal" Precision="38" Scale="5" />
+    <Property Type="Decimal" Name="cashonhand" Precision="38" Scale="6" />
+    <Property Type="Decimal" Name="pendcash" Precision="38" Scale="6" />
+    <Property Type="Decimal" Name="cashremained" Precision="38" Scale="6" />
+    <Property Type="String" Name="userid" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="fundid" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

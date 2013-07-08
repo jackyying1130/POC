@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Fund_FrontEndModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Fund_FrontEndModelStoreContainer">
+    <EntitySet Name="ADM_USERFUND" EntityType="Fund_FrontEndModel.Store.ADM_USERFUND" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FRONT_DBF_FUND" EntityType="Fund_FrontEndModel.Store.FRONT_DBF_FUND" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="ADM_USERFUND">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="FundID" />
+    </Key>
+    <Property Name="UserID" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="FundID" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="Seq" Type="int" Nullable="false" />
+    <Property Name="TimeStmp" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="FRONT_DBF_FUND">
+    <Key>
+      <PropertyRef Name="FundID" />
+    </Key>
+    <Property Name="FundID" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="ShortName" Type="varchar" MaxLength="50" />
+    <Property Name="FundName" Type="varchar" MaxLength="300" />
+    <Property Name="FundMgr" Type="varchar" MaxLength="50" />
+    <Property Name="RebateFlag" Type="char" MaxLength="1" />
+    <Property Name="LastPfmPrice" Type="decimal" Scale="5" />
+    <Property Name="NAV" Type="decimal" Scale="5" />
+    <Property Name="ValFreq" Type="int" />
+    <Property Name="ValFreqUnit" Type="char" MaxLength="1" />
+    <Property Name="ValWithinMth" Type="char" MaxLength="1" />
+    <Property Name="NextValDate" Type="datetime" />
+    <Property Name="FinYrEnd" Type="datetime" />
+    <Property Name="Remark" Type="varchar" MaxLength="4000" />
+    <Property Name="TimeStmp" Type="varchar" MaxLength="50" />
+    <Property Name="ChkStoredPrc" Type="varchar" MaxLength="20" />
+    <Property Name="LaunchDate" Type="datetime" />
+    <Property Name="CCY" Type="varchar" MaxLength="5" />
+    <Property Name="Auditor" Type="varchar" MaxLength="50" />
+    <Property Name="AvgUnitFreq" Type="int" />
+    <Property Name="UpdateBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdateOn" Type="datetime" />
+    <Property Name="LastValDate" Type="datetime" />
+    <Property Name="YrDays" Type="int" />
+    <Property Name="HWM" Type="decimal" Scale="5" />
+    <Property Name="HurdleRate" Type="decimal" Scale="5" />
+    <Property Name="HurdleRatePct" Type="varchar" MaxLength="1" />
+    <Property Name="UnitDec" Type="int" />
+    <Property Name="UnitDecDir" Type="char" MaxLength="1" />
+    <Property Name="GrossNAV" Type="decimal" Scale="5" />
+    <Property Name="FundCost" Type="decimal" Scale="5" />
+    <Property Name="SEQ" Type="int" />
+    <Property Name="UnitFlag" Type="char" MaxLength="1" />
+    <Property Name="FundAlias" Type="varchar" MaxLength="20" />
+    <Property Name="FundBal" Type="decimal" Scale="5" />
+    <Property Name="FirstDDay" Type="datetime" />
+    <Property Name="CloseDate" Type="datetime" />
+    <Property Name="CoCode" Type="varchar" MaxLength="50" />
+    <Property Name="ReqLong" Type="decimal" Scale="3" />
+    <Property Name="ReqShort" Type="decimal" Scale="3" />
+    <Property Name="AllowBL" Type="char" MaxLength="1" />
+    <Property Name="MPFFlag" Type="char" MaxLength="1" />
+    <Property Name="TargetCash" Type="decimal" Scale="5" />
+    <Property Name="SecACNo" Type="varchar" MaxLength="50" />
+    <Property Name="SecACName" Type="varchar" MaxLength="50" />
+    <Property Name="SecACBank" Type="varchar" MaxLength="50" />
+    <Property Name="SecAC2No" Type="varchar" MaxLength="50" />
+    <Property Name="SecAC2Name" Type="varchar" MaxLength="50" />
+    <Property Name="SecAC2Bank" Type="varchar" MaxLength="50" />
+    <Property Name="PPtACNo" Type="varchar" MaxLength="50" />
+    <Property Name="PPtACName" Type="varchar" MaxLength="50" />
+    <Property Name="PPtACBank" Type="varchar" MaxLength="50" />
+    <Property Name="primbkr" Type="varchar" MaxLength="50" />
+    <Property Name="putThruRate" Type="decimal" Scale="5" />
+    <Property Name="FundType" Type="varchar" MaxLength="10" />
+    <Property Name="CustFee" Type="char" MaxLength="1" />
+    <Property Name="ManageApproach" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Autoselect" Type="varchar" MaxLength="1" />
+  </EntityType>
+</Schema>

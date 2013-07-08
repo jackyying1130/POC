@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Fund_FrontEndModelStoreContainer" CdmEntityContainer="Fund_FrontEndEntities">
+    <EntitySetMapping Name="FRONT_DBF_FUND">
+      <EntityTypeMapping TypeName="Fund_FrontEndModel.FRONT_DBF_FUND">
+        <MappingFragment StoreEntitySet="FRONT_DBF_FUND">
+          <ScalarProperty Name="FundID" ColumnName="FundID" />
+          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+          <ScalarProperty Name="FundName" ColumnName="FundName" />
+          <ScalarProperty Name="FundMgr" ColumnName="FundMgr" />
+          <ScalarProperty Name="RebateFlag" ColumnName="RebateFlag" />
+          <ScalarProperty Name="LastPfmPrice" ColumnName="LastPfmPrice" />
+          <ScalarProperty Name="NAV" ColumnName="NAV" />
+          <ScalarProperty Name="ValFreq" ColumnName="ValFreq" />
+          <ScalarProperty Name="ValFreqUnit" ColumnName="ValFreqUnit" />
+          <ScalarProperty Name="ValWithinMth" ColumnName="ValWithinMth" />
+          <ScalarProperty Name="NextValDate" ColumnName="NextValDate" />
+          <ScalarProperty Name="FinYrEnd" ColumnName="FinYrEnd" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="TimeStmp" ColumnName="TimeStmp" />
+          <ScalarProperty Name="ChkStoredPrc" ColumnName="ChkStoredPrc" />
+          <ScalarProperty Name="LaunchDate" ColumnName="LaunchDate" />
+          <ScalarProperty Name="CCY" ColumnName="CCY" />
+          <ScalarProperty Name="Auditor" ColumnName="Auditor" />
+          <ScalarProperty Name="AvgUnitFreq" ColumnName="AvgUnitFreq" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="UpdateOn" ColumnName="UpdateOn" />
+          <ScalarProperty Name="LastValDate" ColumnName="LastValDate" />
+          <ScalarProperty Name="YrDays" ColumnName="YrDays" />
+          <ScalarProperty Name="HWM" ColumnName="HWM" />
+          <ScalarProperty Name="HurdleRate" ColumnName="HurdleRate" />
+          <ScalarProperty Name="HurdleRatePct" ColumnName="HurdleRatePct" />
+          <ScalarProperty Name="UnitDec" ColumnName="UnitDec" />
+          <ScalarProperty Name="UnitDecDir" ColumnName="UnitDecDir" />
+          <ScalarProperty Name="GrossNAV" ColumnName="GrossNAV" />
+          <ScalarProperty Name="FundCost" ColumnName="FundCost" />
+          <ScalarProperty Name="SEQ" ColumnName="SEQ" />
+          <ScalarProperty Name="UnitFlag" ColumnName="UnitFlag" />
+          <ScalarProperty Name="FundAlias" ColumnName="FundAlias" />
+          <ScalarProperty Name="FundBal" ColumnName="FundBal" />
+          <ScalarProperty Name="FirstDDay" ColumnName="FirstDDay" />
+          <ScalarProperty Name="CloseDate" ColumnName="CloseDate" />
+          <ScalarProperty Name="CoCode" ColumnName="CoCode" />
+          <ScalarProperty Name="ReqLong" ColumnName="ReqLong" />
+          <ScalarProperty Name="ReqShort" ColumnName="ReqShort" />
+          <ScalarProperty Name="AllowBL" ColumnName="AllowBL" />
+          <ScalarProperty Name="MPFFlag" ColumnName="MPFFlag" />
+          <ScalarProperty Name="TargetCash" ColumnName="TargetCash" />
+          <ScalarProperty Name="SecACNo" ColumnName="SecACNo" />
+          <ScalarProperty Name="SecACName" ColumnName="SecACName" />
+          <ScalarProperty Name="SecACBank" ColumnName="SecACBank" />
+          <ScalarProperty Name="SecAC2No" ColumnName="SecAC2No" />
+          <ScalarProperty Name="SecAC2Name" ColumnName="SecAC2Name" />
+          <ScalarProperty Name="SecAC2Bank" ColumnName="SecAC2Bank" />
+          <ScalarProperty Name="PPtACNo" ColumnName="PPtACNo" />
+          <ScalarProperty Name="PPtACName" ColumnName="PPtACName" />
+          <ScalarProperty Name="PPtACBank" ColumnName="PPtACBank" />
+          <ScalarProperty Name="primbkr" ColumnName="primbkr" />
+          <ScalarProperty Name="putThruRate" ColumnName="putThruRate" />
+          <ScalarProperty Name="FundType" ColumnName="FundType" />
+          <ScalarProperty Name="CustFee" ColumnName="CustFee" />
+          <ScalarProperty Name="ManageApproach" ColumnName="ManageApproach" />
+          <ScalarProperty Name="Autoselect" ColumnName="Autoselect" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DBF_ORDER_REASON">
+      <EntityTypeMapping TypeName="Fund_FrontEndModel.DBF_ORDER_REASON">
+        <MappingFragment StoreEntitySet="DBF_ORDER_REASON">
+          <ScalarProperty Name="UpdateOn" ColumnName="UpdateOn" />
+          <ScalarProperty Name="Updateby" ColumnName="Updateby" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="seq" ColumnName="seq" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DBF_ORDER_STRATEGY">
+      <EntityTypeMapping TypeName="Fund_FrontEndModel.DBF_ORDER_STRATEGY">
+        <MappingFragment StoreEntitySet="DBF_ORDER_STRATEGY">
+          <ScalarProperty Name="UpdateOn" ColumnName="UpdateOn" />
+          <ScalarProperty Name="Updateby" ColumnName="Updateby" />
+          <ScalarProperty Name="Strategy" ColumnName="Strategy" />
+          <ScalarProperty Name="seq" ColumnName="seq" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOG_FMODR_ERROR">
+      <EntityTypeMapping TypeName="Fund_FrontEndModel.LOG_FMODR_ERROR">
+        <MappingFragment StoreEntitySet="LOG_FMODR_ERROR">
+          <ScalarProperty Name="ByPassBy" ColumnName="ByPassBy" />
+          <ScalarProperty Name="ErrType" ColumnName="ErrType" />
+          <ScalarProperty Name="ByPassReason" ColumnName="ByPassReason" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="ByPass" ColumnName="ByPass" />
+          <ScalarProperty Name="ErrDesc" ColumnName="ErrDesc" />
+          <ScalarProperty Name="ErrCode" ColumnName="ErrCode" />
+          <ScalarProperty Name="FMOdrRef" ColumnName="FMOdrRef" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TRN_FMODR">
+      <EntityTypeMapping TypeName="Fund_FrontEndModel.TRN_FMODR">
+        <MappingFragment StoreEntitySet="TRN_FMODR">
+          <ScalarProperty Name="Onbehalf" ColumnName="Onbehalf" />
+          <ScalarProperty Name="PNoteIssuer" ColumnName="PNoteIssuer" />
+          <ScalarProperty Name="ProdRef" ColumnName="ProdRef" />
+          <ScalarProperty Name="IPOType" ColumnName="IPOType" />
+          <ScalarProperty Name="BasketApproved" ColumnName="BasketApproved" />
+          <ScalarProperty Name="BasketName" ColumnName="BasketName" />
+          <ScalarProperty Name="ActType" ColumnName="ActType" />
+          <ScalarProperty Name="CshHoldPctFlag" ColumnName="CshHoldPctFlag" />
+          <ScalarProperty Name="cshholdpct" ColumnName="cshholdpct" />
+          <ScalarProperty Name="HoldReason" ColumnName="HoldReason" />
+          <ScalarProperty Name="Hold" ColumnName="Hold" />
+          <ScalarProperty Name="OdrOwner" ColumnName="OdrOwner" />
+          <ScalarProperty Name="CD" ColumnName="CD" />
+          <ScalarProperty Name="SentTime" ColumnName="SentTime" />
+          <ScalarProperty Name="Hedging" ColumnName="Hedging" />
+          <ScalarProperty Name="InputBy" ColumnName="InputBy" />
+          <ScalarProperty Name="OdrType" ColumnName="OdrType" />
+          <ScalarProperty Name="AllocationMode" ColumnName="AllocationMode" />
+          <ScalarProperty Name="DocRefNo" ColumnName="DocRefNo" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Callable" ColumnName="Callable" />
+          <ScalarProperty Name="LSFlag" ColumnName="LSFlag" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="UpdateOn" ColumnName="UpdateOn" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Strategy" ColumnName="Strategy" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="Posted" ColumnName="Posted" />
+          <ScalarProperty Name="cOdrStatus" ColumnName="cOdrStatus" />
+          <ScalarProperty Name="cOdrFlag" ColumnName="cOdrFlag" />
+          <ScalarProperty Name="cTotCanQty" ColumnName="cTotCanQty" />
+          <ScalarProperty Name="cTotFillQty" ColumnName="cTotFillQty" />
+          <ScalarProperty Name="cBSFlag" ColumnName="cBSFlag" />
+          <ScalarProperty Name="cUpToQty" ColumnName="cUpToQty" />
+          <ScalarProperty Name="cOdrQty" ColumnName="cOdrQty" />
+          <ScalarProperty Name="cOdrPrice" ColumnName="cOdrPrice" />
+          <ScalarProperty Name="TimeStmp" ColumnName="TimeStmp" />
+          <ScalarProperty Name="ExpDate" ColumnName="ExpDate" />
+          <ScalarProperty Name="Style" ColumnName="Style" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="Pct" ColumnName="Pct" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ProdCCY" ColumnName="ProdCCY" />
+          <ScalarProperty Name="BSFlag" ColumnName="BSFlag" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="FundID" ColumnName="FundID" />
+          <ScalarProperty Name="TraderID" ColumnName="TraderID" />
+          <ScalarProperty Name="FMID" ColumnName="FMID" />
+          <ScalarProperty Name="OdrTime" ColumnName="OdrTime" />
+          <ScalarProperty Name="GrpNo" ColumnName="GrpNo" />
+          <ScalarProperty Name="OdrNo" ColumnName="OdrNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BUF_FMODR">
+      <EntityTypeMapping TypeName="Fund_FrontEndModel.BUF_FMODR">
+        <MappingFragment StoreEntitySet="BUF_FMODR">
+          <ScalarProperty Name="qtyErrFlag" ColumnName="qtyErrFlag" />
+          <ScalarProperty Name="OdrNo" ColumnName="OdrNo" />
+          <ScalarProperty Name="cshholdpct" ColumnName="cshholdpct" />
+          <ScalarProperty Name="basketname" ColumnName="basketname" />
+          <ScalarProperty Name="bypass" ColumnName="bypass" />
+          <ScalarProperty Name="fundbal" ColumnName="fundbal" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="AllocationMode" ColumnName="AllocationMode" />
+          <ScalarProperty Name="PnoteIssuer" ColumnName="PnoteIssuer" />
+          <ScalarProperty Name="ActType" ColumnName="ActType" />
+          <ScalarProperty Name="Updatedon" ColumnName="Updatedon" />
+          <ScalarProperty Name="Updatedby" ColumnName="Updatedby" />
+          <ScalarProperty Name="CD" ColumnName="CD" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="Style" ColumnName="Style" />
+          <ScalarProperty Name="OdrType" ColumnName="OdrType" />
+          <ScalarProperty Name="Tgtwgt" ColumnName="Tgtwgt" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Strategy" ColumnName="Strategy" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="FMID" ColumnName="FMID" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="LSFlag" ColumnName="LSFlag" />
+          <ScalarProperty Name="BSFlag" ColumnName="BSFlag" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="FundID" ColumnName="FundID" />
+          <ScalarProperty Name="RefNo" ColumnName="RefNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_cal_fmodr_v2" FunctionName="Fund_FrontEndModel.Store.sp_cal_fmodr_v2" />
+    <EntitySetMapping Name="FRONT_ADM_USERFUND">
+      <EntityTypeMapping TypeName="Fund_FrontEndModel.FRONT_ADM_USERFUND">
+        <MappingFragment StoreEntitySet="FRONT_ADM_USERFUND">
+          <ScalarProperty Name="UpdateOn" ColumnName="UpdateOn" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="TimeStmp" ColumnName="TimeStmp" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="FundID" ColumnName="FundID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_sys_email_alert_fm" FunctionName="Fund_FrontEndModel.Store.sp_sys_email_alert_fm" />
+    <FunctionImportMapping FunctionImportName="sp_sys_email_alert_ss" FunctionName="Fund_FrontEndModel.Store.sp_sys_email_alert_ss" />
+    <FunctionImportMapping FunctionImportName="sp_ins_fmodr_v2" FunctionName="Fund_FrontEndModel.Store.sp_ins_fmodr_v2" />
+    <EntitySetMapping Name="FRONT_DBF_PRODUCT">
+      <EntityTypeMapping TypeName="Fund_FrontEndModel.FRONT_DBF_PRODUCT">
+        <MappingFragment StoreEntitySet="FRONT_DBF_PRODUCT">
+          <ScalarProperty Name="cntryofrisk" ColumnName="cntryofrisk" />
+          <ScalarProperty Name="collateral" ColumnName="collateral" />
+          <ScalarProperty Name="sd" ColumnName="sd" />
+          <ScalarProperty Name="vwap" ColumnName="vwap" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="MktCap" ColumnName="MktCap" />
+          <ScalarProperty Name="IPODate" ColumnName="IPODate" />
+          <ScalarProperty Name="Issuer" ColumnName="Issuer" />
+          <ScalarProperty Name="FullyPaidUp" ColumnName="FullyPaidUp" />
+          <ScalarProperty Name="ExtProdType" ColumnName="ExtProdType" />
+          <ScalarProperty Name="TickExempt" ColumnName="TickExempt" />
+          <ScalarProperty Name="Short" ColumnName="Short" />
+          <ScalarProperty Name="PriceFactor" ColumnName="PriceFactor" />
+          <ScalarProperty Name="Multiplier" ColumnName="Multiplier" />
+          <ScalarProperty Name="TotHold" ColumnName="TotHold" />
+          <ScalarProperty Name="MgtStake" ColumnName="MgtStake" />
+          <ScalarProperty Name="TxVolAvg" ColumnName="TxVolAvg" />
+          <ScalarProperty Name="TxVolDaily" ColumnName="TxVolDaily" />
+          <ScalarProperty Name="Rel_ProductID" ColumnName="Rel_ProductID" />
+          <ScalarProperty Name="UnitType" ColumnName="UnitType" />
+          <ScalarProperty Name="IssuedShareUPD" ColumnName="IssuedShareUPD" />
+          <ScalarProperty Name="TfrFee" ColumnName="TfrFee" />
+          <ScalarProperty Name="PrevClsPrice" ColumnName="PrevClsPrice" />
+          <ScalarProperty Name="DecPt" ColumnName="DecPt" />
+          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+          <ScalarProperty Name="LotSize" ColumnName="LotSize" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="UpdateOn" ColumnName="UpdateOn" />
+          <ScalarProperty Name="CCYQuote" ColumnName="CCYQuote" />
+          <ScalarProperty Name="RestrictToDate" ColumnName="RestrictToDate" />
+          <ScalarProperty Name="RestrictFmDate" ColumnName="RestrictFmDate" />
+          <ScalarProperty Name="Remark2" ColumnName="Remark2" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="AdminFee" ColumnName="AdminFee" />
+          <ScalarProperty Name="SSEFee" ColumnName="SSEFee" />
+          <ScalarProperty Name="SettleFee" ColumnName="SettleFee" />
+          <ScalarProperty Name="TradeFee" ColumnName="TradeFee" />
+          <ScalarProperty Name="CCASS" ColumnName="CCASS" />
+          <ScalarProperty Name="Suspend" ColumnName="Suspend" />
+          <ScalarProperty Name="Levy" ColumnName="Levy" />
+          <ScalarProperty Name="Stamp" ColumnName="Stamp" />
+          <ScalarProperty Name="IssuedShare" ColumnName="IssuedShare" />
+          <ScalarProperty Name="ChgPct" ColumnName="ChgPct" />
+          <ScalarProperty Name="ClsAsk" ColumnName="ClsAsk" />
+          <ScalarProperty Name="ClsBid" ColumnName="ClsBid" />
+          <ScalarProperty Name="LastPrice" ColumnName="LastPrice" />
+          <ScalarProperty Name="ClsPrice" ColumnName="ClsPrice" />
+          <ScalarProperty Name="VotePerShare" ColumnName="VotePerShare" />
+          <ScalarProperty Name="CashType" ColumnName="CashType" />
+          <ScalarProperty Name="SEDOLL" ColumnName="SEDOLL" />
+          <ScalarProperty Name="ISIN" ColumnName="ISIN" />
+          <ScalarProperty Name="CtryCode" ColumnName="CtryCode" />
+          <ScalarProperty Name="CCY" ColumnName="CCY" />
+          <ScalarProperty Name="ExchID" ColumnName="ExchID" />
+          <ScalarProperty Name="Industry" ColumnName="Industry" />
+          <ScalarProperty Name="ProductType" ColumnName="ProductType" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_ORDER_FORM_RESULT">
+      <EntityTypeMapping TypeName="Fund_FrontEndModel.v_ORDER_FORM_RESULT">
+        <MappingFragment StoreEntitySet="v_ORDER_FORM_RESULT">
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="hldpct" ColumnName="hldpct" />
+          <ScalarProperty Name="errtype" ColumnName="errtype" />
+          <ScalarProperty Name="errmsge" ColumnName="errmsge" />
+          <ScalarProperty Name="errdesc" ColumnName="errdesc" />
+          <ScalarProperty Name="errcode" ColumnName="errcode" />
+          <ScalarProperty Name="wgt" ColumnName="wgt" />
+          <ScalarProperty Name="ccy" ColumnName="ccy" />
+          <ScalarProperty Name="tgtwgt" ColumnName="tgtwgt" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="priority" ColumnName="priority" />
+          <ScalarProperty Name="bsflag" ColumnName="bsflag" />
+          <ScalarProperty Name="lsflag" ColumnName="lsflag" />
+          <ScalarProperty Name="productid" ColumnName="productid" />
+          <ScalarProperty Name="fundalias" ColumnName="fundalias" />
+          <ScalarProperty Name="fundid" ColumnName="fundid" />
+          <ScalarProperty Name="refno" ColumnName="refno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRONT_BAL_PORTFOLIO">
+      <EntityTypeMapping TypeName="Fund_FrontEndModel.FRONT_BAL_PORTFOLIO">
+        <MappingFragment StoreEntitySet="FRONT_BAL_PORTFOLIO">
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="UpdateOn" ColumnName="UpdateOn" />
+          <ScalarProperty Name="CoCode" ColumnName="CoCode" />
+          <ScalarProperty Name="FundCost" ColumnName="FundCost" />
+          <ScalarProperty Name="FundBal" ColumnName="FundBal" />
+          <ScalarProperty Name="ProdCost_FundCCY" ColumnName="ProdCost_FundCCY" />
+          <ScalarProperty Name="ProdBal_FundCCY" ColumnName="ProdBal_FundCCY" />
+          <ScalarProperty Name="ProdCost_ProdCCY" ColumnName="ProdCost_ProdCCY" />
+          <ScalarProperty Name="ProdBal_ProdCCY" ColumnName="ProdBal_ProdCCY" />
+          <ScalarProperty Name="GLType" ColumnName="GLType" />
+          <ScalarProperty Name="ProdMrgn" ColumnName="ProdMrgn" />
+          <ScalarProperty Name="ProdTypeMultiplier" ColumnName="ProdTypeMultiplier" />
+          <ScalarProperty Name="ProdType" ColumnName="ProdType" />
+          <ScalarProperty Name="FxRate" ColumnName="FxRate" />
+          <ScalarProperty Name="FundCCY" ColumnName="FundCCY" />
+          <ScalarProperty Name="ProdCCY" ColumnName="ProdCCY" />
+          <ScalarProperty Name="AvgCost" ColumnName="AvgCost" />
+          <ScalarProperty Name="ValPrice" ColumnName="ValPrice" />
+          <ScalarProperty Name="ValQty" ColumnName="ValQty" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="FundID" ColumnName="FundID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_QRY_FUND_CASH">
+      <EntityTypeMapping TypeName="Fund_FrontEndModel.v_QRY_FUND_CASH">
+        <MappingFragment StoreEntitySet="v_QRY_FUND_CASH">
+          <ScalarProperty Name="fundid" ColumnName="fundid" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="cashremained" ColumnName="cashremained" />
+          <ScalarProperty Name="pendcash" ColumnName="pendcash" />
+          <ScalarProperty Name="cashonhand" ColumnName="cashonhand" />
+          <ScalarProperty Name="fundbal" ColumnName="fundbal" />
+          <ScalarProperty Name="fundccy" ColumnName="fundccy" />
+          <ScalarProperty Name="fundalias" ColumnName="fundalias" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_QRY_FUND_CASH_TWD">
+      <EntityTypeMapping TypeName="Fund_FrontEndModel.v_QRY_FUND_CASH_TWD">
+        <MappingFragment StoreEntitySet="v_QRY_FUND_CASH_TWD">
+          <ScalarProperty Name="fundid" ColumnName="fundid" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="cashremained" ColumnName="cashremained" />
+          <ScalarProperty Name="pendcash" ColumnName="pendcash" />
+          <ScalarProperty Name="cashonhand" ColumnName="cashonhand" />
+          <ScalarProperty Name="fundbal" ColumnName="fundbal" />
+          <ScalarProperty Name="fundccy" ColumnName="fundccy" />
+          <ScalarProperty Name="fundalias" ColumnName="fundalias" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Fund_FrontEndModelStoreContainer" CdmEntityContainer="Fund_FrontEndEntities">
+    <EntitySetMapping Name="ADM_USERFUND">
+      <EntityTypeMapping TypeName="Fund_FrontEndModel.ADM_USERFUND">
+        <MappingFragment StoreEntitySet="ADM_USERFUND">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="FundID" ColumnName="FundID" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="TimeStmp" ColumnName="TimeStmp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRONT_DBF_FUND">
+      <EntityTypeMapping TypeName="Fund_FrontEndModel.FRONT_DBF_FUND">
+        <MappingFragment StoreEntitySet="FRONT_DBF_FUND">
+          <ScalarProperty Name="FundID" ColumnName="FundID" />
+          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+          <ScalarProperty Name="FundName" ColumnName="FundName" />
+          <ScalarProperty Name="FundMgr" ColumnName="FundMgr" />
+          <ScalarProperty Name="RebateFlag" ColumnName="RebateFlag" />
+          <ScalarProperty Name="LastPfmPrice" ColumnName="LastPfmPrice" />
+          <ScalarProperty Name="NAV" ColumnName="NAV" />
+          <ScalarProperty Name="ValFreq" ColumnName="ValFreq" />
+          <ScalarProperty Name="ValFreqUnit" ColumnName="ValFreqUnit" />
+          <ScalarProperty Name="ValWithinMth" ColumnName="ValWithinMth" />
+          <ScalarProperty Name="NextValDate" ColumnName="NextValDate" />
+          <ScalarProperty Name="FinYrEnd" ColumnName="FinYrEnd" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="TimeStmp" ColumnName="TimeStmp" />
+          <ScalarProperty Name="ChkStoredPrc" ColumnName="ChkStoredPrc" />
+          <ScalarProperty Name="LaunchDate" ColumnName="LaunchDate" />
+          <ScalarProperty Name="CCY" ColumnName="CCY" />
+          <ScalarProperty Name="Auditor" ColumnName="Auditor" />
+          <ScalarProperty Name="AvgUnitFreq" ColumnName="AvgUnitFreq" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="UpdateOn" ColumnName="UpdateOn" />
+          <ScalarProperty Name="LastValDate" ColumnName="LastValDate" />
+          <ScalarProperty Name="YrDays" ColumnName="YrDays" />
+          <ScalarProperty Name="HWM" ColumnName="HWM" />
+          <ScalarProperty Name="HurdleRate" ColumnName="HurdleRate" />
+          <ScalarProperty Name="HurdleRatePct" ColumnName="HurdleRatePct" />
+          <ScalarProperty Name="UnitDec" ColumnName="UnitDec" />
+          <ScalarProperty Name="UnitDecDir" ColumnName="UnitDecDir" />
+          <ScalarProperty Name="GrossNAV" ColumnName="GrossNAV" />
+          <ScalarProperty Name="FundCost" ColumnName="FundCost" />
+          <ScalarProperty Name="SEQ" ColumnName="SEQ" />
+          <ScalarProperty Name="UnitFlag" ColumnName="UnitFlag" />
+          <ScalarProperty Name="FundAlias" ColumnName="FundAlias" />
+          <ScalarProperty Name="FundBal" ColumnName="FundBal" />
+          <ScalarProperty Name="FirstDDay" ColumnName="FirstDDay" />
+          <ScalarProperty Name="CloseDate" ColumnName="CloseDate" />
+          <ScalarProperty Name="CoCode" ColumnName="CoCode" />
+          <ScalarProperty Name="ReqLong" ColumnName="ReqLong" />
+          <ScalarProperty Name="ReqShort" ColumnName="ReqShort" />
+          <ScalarProperty Name="AllowBL" ColumnName="AllowBL" />
+          <ScalarProperty Name="MPFFlag" ColumnName="MPFFlag" />
+          <ScalarProperty Name="TargetCash" ColumnName="TargetCash" />
+          <ScalarProperty Name="SecACNo" ColumnName="SecACNo" />
+          <ScalarProperty Name="SecACName" ColumnName="SecACName" />
+          <ScalarProperty Name="SecACBank" ColumnName="SecACBank" />
+          <ScalarProperty Name="SecAC2No" ColumnName="SecAC2No" />
+          <ScalarProperty Name="SecAC2Name" ColumnName="SecAC2Name" />
+          <ScalarProperty Name="SecAC2Bank" ColumnName="SecAC2Bank" />
+          <ScalarProperty Name="PPtACNo" ColumnName="PPtACNo" />
+          <ScalarProperty Name="PPtACName" ColumnName="PPtACName" />
+          <ScalarProperty Name="PPtACBank" ColumnName="PPtACBank" />
+          <ScalarProperty Name="primbkr" ColumnName="primbkr" />
+          <ScalarProperty Name="putThruRate" ColumnName="putThruRate" />
+          <ScalarProperty Name="FundType" ColumnName="FundType" />
+          <ScalarProperty Name="CustFee" ColumnName="CustFee" />
+          <ScalarProperty Name="ManageApproach" ColumnName="ManageApproach" />
+          <ScalarProperty Name="Autoselect" ColumnName="Autoselect" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Fund_FrontEndModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Fund_FrontEndEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="ADM_USERFUND" EntityType="Fund_FrontEndModel.ADM_USERFUND" />
+    <EntitySet Name="FRONT_DBF_FUND" EntityType="Fund_FrontEndModel.FRONT_DBF_FUND" />
+  </EntityContainer>
+  <EntityType Name="ADM_USERFUND">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="FundID" />
+    </Key>
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="FundID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="Seq" Type="Int32" Nullable="false" />
+    <Property Name="TimeStmp" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="FRONT_DBF_FUND">
+    <Key>
+      <PropertyRef Name="FundID" />
+    </Key>
+    <Property Name="FundID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="ShortName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="FundName" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+    <Property Name="FundMgr" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="RebateFlag" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="LastPfmPrice" Type="Decimal" Precision="18" Scale="5" />
+    <Property Name="NAV" Type="Decimal" Precision="18" Scale="5" />
+    <Property Name="ValFreq" Type="Int32" />
+    <Property Name="ValFreqUnit" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="ValWithinMth" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="NextValDate" Type="DateTime" Precision="3" />
+    <Property Name="FinYrEnd" Type="DateTime" Precision="3" />
+    <Property Name="Remark" Type="String" MaxLength="4000" Unicode="false" FixedLength="false" />
+    <Property Name="TimeStmp" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ChkStoredPrc" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="LaunchDate" Type="DateTime" Precision="3" />
+    <Property Name="CCY" Type="String" MaxLength="5" Unicode="false" FixedLength="false" />
+    <Property Name="Auditor" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="AvgUnitFreq" Type="Int32" />
+    <Property Name="UpdateBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UpdateOn" Type="DateTime" Precision="3" />
+    <Property Name="LastValDate" Type="DateTime" Precision="3" />
+    <Property Name="YrDays" Type="Int32" />
+    <Property Name="HWM" Type="Decimal" Precision="18" Scale="5" />
+    <Property Name="HurdleRate" Type="Decimal" Precision="18" Scale="5" />
+    <Property Name="HurdleRatePct" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+    <Property Name="UnitDec" Type="Int32" />
+    <Property Name="UnitDecDir" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="GrossNAV" Type="Decimal" Precision="18" Scale="5" />
+    <Property Name="FundCost" Type="Decimal" Precision="18" Scale="5" />
+    <Property Name="SEQ" Type="Int32" />
+    <Property Name="UnitFlag" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="FundAlias" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="FundBal" Type="Decimal" Precision="18" Scale="5" />
+    <Property Name="FirstDDay" Type="DateTime" Precision="3" />
+    <Property Name="CloseDate" Type="DateTime" Precision="3" />
+    <Property Name="CoCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ReqLong" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="ReqShort" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="AllowBL" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="MPFFlag" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="TargetCash" Type="Decimal" Precision="18" Scale="5" />
+    <Property Name="SecACNo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="SecACName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="SecACBank" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="SecAC2No" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="SecAC2Name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="SecAC2Bank" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="PPtACNo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="PPtACName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="PPtACBank" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="primbkr" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="putThruRate" Type="Decimal" Precision="18" Scale="5" />
+    <Property Name="FundType" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="CustFee" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="ManageApproach" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Autoselect" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+  </EntityType>
+</Schema>

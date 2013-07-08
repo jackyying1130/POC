@@ -1,0 +1,33 @@
+﻿<Metro:MetroWindow x:Class="VPFS.Views.RootView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:cal="http://www.caliburnproject.org"
+        xmlns:Metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        Title="{Binding windowTitle}" Height="1024" Width="1280">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colours.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top" Background="LightSkyBlue">
+                <MenuItem Header="Trading" Height="27" FontSize="12" Background="LightSkyBlue" FontFamily="{DynamicResource DefaultFont}" FontWeight="Bold" Padding="5,5" BorderBrush="LightSkyBlue">
+                    <MenuItem Header="Place Order" Name="DisplayWindow"  Width="200" Height="27" VerticalAlignment="Center"/>
+                    <MenuItem Header="Execute Order"   Width="200" Height="27" VerticalAlignment="Center"/>
+                    <MenuItem Header="Allocation"   Width="200" Height="27" VerticalAlignment="Center"/>
+                </MenuItem>
+            </Menu>
+            
+            <StackPanel>
+                <ContentControl x:Name="ActiveItem" Height="960"  />
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</Metro:MetroWindow>

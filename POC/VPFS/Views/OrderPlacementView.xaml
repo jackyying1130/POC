@@ -1,0 +1,350 @@
+﻿<UserControl x:Class="VPFS.Views.OrderPlacementView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cal="http://www.caliburnproject.org"
+             xmlns:converter="clr-namespace:VPFS.Utilities.Converters"
+             xmlns:toolkitExt="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+             xmlns:toolkit="http://schemas.microsoft.com/wpf/2008/toolkit"
+             xmlns:Metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             mc:Ignorable="d" 
+             d:DesignHeight="960" d:DesignWidth="1280" cal:Message.Attach="[Event Loaded] = [Action LoadWindow]">
+    <UserControl.Resources>
+        <converter:BooleanConverter x:Key="booleanConverter" />
+        <converter:OrderResultToBackground x:Key="orderResultToBackground" />
+        <converter:StrategyToBackground x:Key="strategyToBackground" />
+        <converter:NegativeConverter x:Key="negativeConverter" />
+        <converter:NumberConverter x:Key="numberConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <DockPanel>
+            <Grid DockPanel.Dock="Bottom" Height="408">
+                <DataGrid  HeadersVisibility="Column" AutoGenerateColumns="False" Name="orderList" GridLinesVisibility="None" AlternatingRowBackground="Gainsboro" Margin="10">
+                    <DataGrid.CellStyle>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <Setter Property="BorderThickness" Value="0"/>
+                        </Style>
+                    </DataGrid.CellStyle>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding OdrTime, Mode=OneWay}" Width="150" Header="Order Time" />
+                        <DataGridTextColumn Binding="{Binding FundID, Mode=OneWay}" Width="60" Header="Fund ID" />
+                        <DataGridTextColumn Binding="{Binding ProductID, Mode=OneWay}" Width="80" Header="Product ID" />
+                        <DataGridTextColumn Binding="{Binding LSFlag, Mode=OneWay}" Width="30" Header="L/S" />
+                        <DataGridTextColumn Binding="{Binding BSFlag, Mode=OneWay}" Width="30" Header="B/S" />
+                        <DataGridTextColumn Binding="{Binding Price, Mode=OneWay}" Width="60" Header="Price" />
+                        <DataGridTextColumn Binding="{Binding cOdrQty, Mode=OneWay}" Width="100" Header="Quantity" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+            <Grid DockPanel.Dock="Left" Width="707">
+                <StackPanel HorizontalAlignment="Left" Height="26" Margin="10,10,0,0" VerticalAlignment="Top" Width="696" Orientation="Horizontal">
+                    <TextBlock TextWrapping="Wrap" Text="Product:" VerticalAlignment="Center"/>
+                    <Separator Width="13" Visibility="Hidden"/>
+                    <toolkitExt:AutoCompleteBox FilterMode="None" cal:Message.Attach="[Event Populating] = [PopulateProductsData()]" 
+                        ItemsSource="{Binding productsFilterList}" Width="585" ValueMemberPath="ProductID" Name="txtProductID" 
+                        Text="{Binding productID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=true, NotifyOnValidationError=True}">
+                        <toolkitExt:AutoCompleteBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding ProductID}" Width="120" />
+                                    <TextBlock Text="{Binding ProductType}" Width="40" />
+                                    <TextBlock Text="{Binding ExchID}" Width="60" />
+                                    <TextBlock Text="{Binding ProductName}" Width="420" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </toolkitExt:AutoCompleteBox.ItemTemplate>
+                    </toolkitExt:AutoCompleteBox>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Height="26" Margin="10,41,0,0" VerticalAlignment="Top" Width="696" Orientation="Horizontal">
+                    <TextBlock TextWrapping="Wrap" Text="Order Type:" Width="69" VerticalAlignment="Center"/>
+                    <ComboBox Width="104" SelectedValuePath="Tag" SelectedValue="{Binding orderType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <ComboBoxItem Content="Buy" Tag="LB" />
+                        <ComboBoxItem Content="Sell" Tag="LS" />
+                        <ComboBoxItem Content="Short Sell" Tag="SS" />
+                        <ComboBoxItem Content="Cover Buy" Tag="SB" />
+                    </ComboBox>
+                    <Separator Width="25" Visibility="Hidden"/>
+                    <TextBlock TextWrapping="Wrap" Text="Quantity:  "  VerticalAlignment="Center"/>
+                    <TextBox TextWrapping="Wrap" Width="87" Name="txtQty" Text="{Binding productQty}" cal:Message.Attach="[Event LostFocus] = [UpdateQty(txtQty.Text)]" />
+                    <ComboBox Width="91">
+                        <ComboBoxItem Content="% Target" IsSelected="True"/>
+                        <ComboBoxItem Content="Qty"/>
+                        <ComboBoxItem Content="Waterfall"/>
+                        <ComboBoxItem Content="% Add/(Cut)"/>
+                    </ComboBox>
+                    <Separator Width="25" Visibility="Hidden"/>
+                    <TextBlock TextWrapping="Wrap" Text="Price:  " VerticalAlignment="Center"/>
+                    <TextBox TextWrapping="Wrap" Width="62" Name="txtPrice" Text="{Binding productPrice}" IsEnabled="{Binding productPriceEnabled}" cal:Message.Attach="[Event LostFocus] = [UpdatePrice(txtPrice.Text)]" />
+                    <Separator Width="1" Visibility="Hidden"/>
+                    <CheckBox Content="CD" VerticalAlignment="Center" cal:Message.Attach="[Event Click] = [UpdateCD(txtCD.IsChecked)]" Name="txtCD" />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Height="26" Margin="10,72,0,0" VerticalAlignment="Top" Width="696" Orientation="Horizontal">
+                    <TextBlock TextWrapping="Wrap" Text="Reason:" Width="69" VerticalAlignment="Center"/>
+                    <ComboBox Width="104" ItemsSource="{Binding Path=orderReasonList, Mode=OneWay}" DisplayMemberPath="Reason" SelectedValuePath="Reason" IsEditable="True" Name="txtReason" cal:Message.Attach="[Event LostFocus] = [UpdateReason(txtReason.Text)]" />
+                    <Separator Width="25" Visibility="Hidden"/>
+                    <TextBlock TextWrapping="Wrap" Text="Strategy:" Width="55" VerticalAlignment="Center"/>
+                    <ComboBox Width="178" ItemsSource="{Binding Path=orderStrategyList, Mode=OneWay}" DisplayMemberPath="Strategy" SelectedValuePath="Strategy" IsEditable="True" Name="txtStategy" cal:Message.Attach="[Event LostFocus] = [UpdateStrategy(txtStategy.Text)]" />
+                </StackPanel>
+                <TabControl Margin="10,103,0,0" SelectedIndex="{Binding selectedTabIndex}" HorizontalAlignment="Left" Width="696">
+                    <TabItem Header="Fund List">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="400*"/>
+                                <RowDefinition Height="37*"/>
+                            </Grid.RowDefinitions>
+                            <DataGrid Grid.Row="0" VirtualizingStackPanel.IsVirtualizing="False" CanUserAddRows="false" HeadersVisibility="Column" AutoGenerateColumns="False" Name="orderFormList" GridLinesVisibility="None">
+                                <DataGrid.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                        <Setter Property="Foreground" Value="Black" />
+                                        <Style.Triggers>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter Property="Background" Value="{x:Null}" />
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGrid.CellStyle>
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn Header="" Width="60">
+                                        <DataGridTemplateColumn.HeaderTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button ToolTip="Select All Funds" Width="25" Height="17" Content="A" FontSize="9" cal:Message.Attach="[Event Click] = [Action SelectAll()]"/>
+                                                    <Button ToolTip="Select Classic Funds" Width="25" Height="17" Content="C" FontSize="9" cal:Message.Attach="[Event Click] = [Action SelectClassic()]"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.HeaderTemplate>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <CheckBox Name="selected" cal:Message.Attach="[Event Click] = [Action OrderSummary()]" IsChecked="{Binding selected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn Header="Fund ID">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding fundAlias}" Width="90" VerticalAlignment="Center" FontWeight="Bold">
+                                                    <TextBlock.Foreground>
+                                                        <MultiBinding Converter="{StaticResource strategyToBackground}">
+                                                            <Binding Path="selected" />
+                                                            <Binding Path="manageApproach" />
+                                                        </MultiBinding>
+                                                    </TextBlock.Foreground>
+                                                </TextBlock>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn Header="CD">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <CheckBox Name="rowCD" IsChecked="{Binding cd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource booleanConverter}, ConverterParameter='yn'}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn Header="Price">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBox Text="{Binding price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80" BorderThickness="0" TextAlignment="Right"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn Header="Qty / %">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBox Text="{Binding qty, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80" BorderThickness="0" TextAlignment="Right"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn Header="Priority">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <ComboBox Width="70" SelectedValuePath="Tag" SelectedValue="{Binding priority, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                                    <ComboBoxItem Content="High" Tag="1" />
+                                                    <ComboBoxItem Content="Normal" Tag="90" IsSelected="True" />
+                                                </ComboBox>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn Header="Reason">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <ComboBox Width="100" Height="10" ItemsSource="{Binding Path=DataContext.orderReasonList, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}" DisplayMemberPath="Reason" SelectedValuePath="Reason" IsEditable="True" SelectedValue="{Binding reason, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn Header="Strategy">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <ComboBox Width="163" Height="10" ItemsSource="{Binding Path=DataContext.orderStrategyList, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}" DisplayMemberPath="Strategy" SelectedValuePath="Strategy" IsEditable="True" SelectedValue="{Binding strategy, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <StackPanel Grid.Row="1" Orientation="Horizontal"  Margin="0,5,0,0">
+                                <TextBlock FontWeight="Bold" Text="Total Selected Funds: " VerticalAlignment="Center"/>
+                                <TextBlock Width="30" Text="{Binding totalSelectedFunds, Mode=OneWay}" VerticalAlignment="Center"/>
+                                <Separator Width="100" Visibility="Hidden"/>
+                                <TextBlock FontWeight="Bold" Text="Total Quantity: " VerticalAlignment="Center"/>
+                                <TextBlock Width="80" Text="{Binding totalSelectedQuantity, Mode=OneWay}" VerticalAlignment="Center"/>
+                                <Separator Width="160" Visibility="Hidden"/>
+                                <Button Content="Calculate" Width="80" Name="OrderCalculateMain" FontWeight="Bold" Background="LightSkyBlue"/>
+                            </StackPanel>
+                            <Metro:ProgressRing Grid.Row="0" IsActive="{Binding isProcessing, Mode=OneWay}" Foreground="MidnightBlue" Height="60" Width="60" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Confirmation">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="400*"/>
+                                <RowDefinition Height="37*"/>
+                            </Grid.RowDefinitions>
+                            <DataGrid Grid.Row="0" CanUserAddRows="false" HeadersVisibility="Column" AutoGenerateColumns="False" Name="orderFormResultList" GridLinesVisibility="Horizontal">
+                                <DataGrid.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                    </Style>
+                                </DataGrid.CellStyle>
+                                <DataGrid.RowStyle>
+                                    <Style TargetType="{x:Type DataGridRow}">
+                                        <Setter Property="Background">
+                                            <Setter.Value>
+                                                <MultiBinding Converter="{StaticResource orderResultToBackground}">
+                                                    <Binding Path="bsflag" />
+                                                    <Binding Path="errtype" />
+                                                </MultiBinding>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </DataGrid.RowStyle>
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn Header="Product ID">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding productid}" VerticalAlignment="Center" Width="80"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn Header="Fund ID">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding fundid}" VerticalAlignment="Center" Width="60"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn Header="L/S">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding lsflag}" VerticalAlignment="Center" Width="30"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn Header="B/S">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding bsflag}" VerticalAlignment="Center" Width="30"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn Header="Priority">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding priority}" VerticalAlignment="Center" Width="50"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn Header="Price">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding price}" VerticalAlignment="Center" Width="80" TextAlignment="Right"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn Header="Quantity">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding qty}" VerticalAlignment="Center" Width="80" TextAlignment="Right"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn Header="Tgt%">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding tgtwgt}" VerticalAlignment="Center" Width="50" TextAlignment="Right"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn Header="CCY">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding ccy}" VerticalAlignment="Center" Width="35"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn Header="Wgt%">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding wgt}" VerticalAlignment="Center" Width="50" TextAlignment="Right"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn Header="Error Message">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal"  Height="25">
+                                                    <TextBlock Text="{Binding errcode}" VerticalAlignment="Center"/>
+                                                    <TextBlock Text="{Binding errmsge}" VerticalAlignment="Center"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <StackPanel Grid.Row="1" Orientation="Horizontal"  Margin="0,5,0,0">
+                                <TextBlock FontWeight="Bold" Text="Funds Pass Ratio: " VerticalAlignment="Center"/>
+                                <TextBlock Width="100" Text="{Binding fundsPassRatio, Mode=OneWay}" VerticalAlignment="Center"/>
+                                <Separator Width="30" Visibility="Hidden"/>
+                                <TextBlock FontWeight="Bold" Text="Quantity Ratio: " VerticalAlignment="Center"/>
+                                <TextBlock Width="180" Text="{Binding quantityPassRatio, Mode=OneWay}" VerticalAlignment="Center"/>
+                                <Separator Width="80" Visibility="Hidden"/>
+                                <Button Content="Save" Width="80" Name="OrderSave" FontWeight="Bold" Background="LightSkyBlue"/>
+                            </StackPanel>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+
+            </Grid>
+            <Grid DockPanel.Dock="Right">
+                <StackPanel Orientation="Horizontal" Margin="10,10,10,0" VerticalAlignment="Top" Height="26">
+                    <ComboBox Width="103" SelectedValuePath="Tag" SelectedValue="{Binding enquiryType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" cal:Message.Attach="[Event SelectionChanged] = [Action ListEnquiryItem()]">
+                        <ComboBoxItem Content="Fund" Tag="fund" IsSelected="True" />
+                        <ComboBoxItem Content="Stock" Tag="stock" />
+                        <ComboBoxItem Content="Cash" Tag="cash" />
+                    </ComboBox>
+                    <ComboBox Width="449" ItemsSource="{Binding Path=enquiryItemList, Mode=OneWay}" DisplayMemberPath="{Binding Path=enquiryItem, Mode=OneWay}" SelectedValuePath="{Binding Path=enquiryItem, Mode=OneWay}" SelectedValue="{Binding enquiryCriteria, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEditable="True" cal:Message.Attach="[Event SelectionChanged] = [Action EnquiryPortfolio()]">
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </ComboBox>
+                </StackPanel>
+                <DataGrid CanUserAddRows="false" AlternatingRowBackground="LightSkyBlue" HeadersVisibility="Column" AutoGenerateColumns="True" Name="enquiryList" GridLinesVisibility="Horizontal" Margin="10,40,10,0" cal:Message.Attach="[Event AutoGeneratingColumn] = [Action CustomizeColumns($eventArgs)]">
+                    <DataGrid.RowStyle>
+                        <Style TargetType="{x:Type DataGridRow}">
+                            <Setter Property="Height" Value="25" />
+                        </Style>
+                    </DataGrid.RowStyle>
+                    <DataGrid.CellStyle>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Foreground" Value="{Binding Path=Content.Text, RelativeSource={RelativeSource Self}, Converter={StaticResource negativeConverter}}" />
+                            <Setter Property="HorizontalAlignment" Value="{Binding Path=Content.Text, RelativeSource={RelativeSource Self}, Converter={StaticResource numberConverter}}" />
+                        </Style>
+                    </DataGrid.CellStyle>
+                </DataGrid>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</UserControl>
